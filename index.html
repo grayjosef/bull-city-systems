@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bull City Systems — Veteran-owned technical studio in Durham, NC</title>
+<meta name="description" content="Bull City Systems builds websites, automation, IT systems, and Microsoft 365 cleanup for small businesses in Durham and the Triangle. Veteran-owned. Affordable flat-fee options." />
+
+<meta property="og:title" content="Bull City Systems — Durham, NC" />
+<meta property="og:description" content="Websites, automation, IT, and Microsoft 365 for Triangle small businesses. Veteran-owned." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bullcitysystems.com" />
+<meta name="theme-color" content="#0B0D11" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,500;12..96,75..100,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="sections.css" />
+<link rel="stylesheet" href="sections-v2.css" />
+<link rel="stylesheet" href="welcome.css" />
+</head>
+<body data-hero="default" data-services="grid" data-accent="gold">
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="app-welcome.jsx"></script>
+<script type="text/babel" src="app-nav-hero.jsx"></script>
+<script type="text/babel" src="app-ai-gap.jsx"></script>
+<script type="text/babel" src="app-sections-1.jsx"></script>
+<script type="text/babel" src="app-sections-2.jsx"></script>
+<script type="text/babel" src="app-about.jsx"></script>
+<script type="text/babel" src="app-intake-footer.jsx"></script>
+
+<script type="text/babel">
+function App() {
+  return (
+    <React.Fragment>
+      <WelcomeIntro />
+      <Nav />
+      <main>
+        <Hero />
+        <Problem />
+        <AIGap />
+        <Services />
+        <Why />
+        <Pricing />
+        <Process />
+        <Durham />
+        <About />
+        <Intake />
+      </main>
+      <Footer />
+      <DurhamFlagBadge />
+    </React.Fragment>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+
+</body>
+</html>

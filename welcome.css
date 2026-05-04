@@ -1,0 +1,585 @@
+/* =========================================================
+   WELCOME INTRO v3 — Bull charges, slings flag, wordmark stamps
+   Cinematic. Punchy. No paint-bars.
+   ========================================================= */
+
+/* ---------- ROOT OVERLAY ---------- */
+.welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(ellipse at 50% 70%, #0F1218 0%, #06080B 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: opacity 700ms var(--ease-out);
+}
+.welcome-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Camera shell — receives shake on impact */
+.welcome-cam {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform-origin: center center;
+}
+/* impact shake at end of phase 2 (when bull stops) */
+.welcome-p2 .welcome-cam,
+.welcome-p3 .welcome-cam {
+  animation: camShake 600ms cubic-bezier(.36,.07,.19,.97) 1100ms;
+}
+@keyframes camShake {
+  0%, 100% { transform: translate3d(0,0,0); }
+  10% { transform: translate3d(-4px, 2px, 0); }
+  20% { transform: translate3d(4px, -2px, 0); }
+  30% { transform: translate3d(-3px, 1px, 0); }
+  45% { transform: translate3d(3px, -1px, 0); }
+  60% { transform: translate3d(-2px, 1px, 0); }
+  75% { transform: translate3d(1px, 0, 0); }
+}
+
+/* ---------- HORIZON / SUN ---------- */
+.welcome-horizon {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.welcome-sun {
+  position: absolute;
+  bottom: 24%;
+  right: 18%;
+  width: clamp(280px, 36vw, 620px);
+  height: clamp(280px, 36vw, 620px);
+  border-radius: 50%;
+  background: radial-gradient(circle at center,
+              rgba(255, 196, 90, 0.95) 0%,
+              rgba(220, 150, 50, 0.65) 25%,
+              rgba(184, 90, 30, 0.25) 55%,
+              rgba(184, 58, 40, 0) 75%);
+  filter: blur(2px);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 1200ms var(--ease-out), transform 1400ms var(--ease-out);
+}
+.welcome-p1 .welcome-sun, .welcome-p2 .welcome-sun {
+  opacity: 1; transform: scale(1);
+}
+.welcome-p3 .welcome-sun, .welcome-p4 .welcome-sun {
+  opacity: 0.5; transform: scale(1.05);
+  transition: opacity 600ms var(--ease-out), transform 800ms var(--ease-out);
+}
+.welcome-p5 .welcome-sun { opacity: 0; }
+
+.welcome-ground {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 28%;
+  background: linear-gradient(180deg,
+              transparent 0%,
+              rgba(0,0,0,0.4) 60%,
+              rgba(0,0,0,0.85) 100%);
+}
+.welcome-ground-line {
+  position: absolute;
+  bottom: 28%;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,147,46,0.6) 30%, rgba(200,147,46,0.6) 70%, transparent);
+  opacity: 0;
+  transition: opacity 800ms var(--ease-out);
+}
+.welcome-p1 .welcome-ground-line,
+.welcome-p2 .welcome-ground-line,
+.welcome-p3 .welcome-ground-line,
+.welcome-p4 .welcome-ground-line { opacity: 1; }
+
+/* ---------- SPEED LINES (charge motion) ---------- */
+.welcome-speed {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.welcome-p2 .welcome-speed { opacity: 1; }
+.speed-line {
+  position: absolute;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(236,229,214,0.35), transparent);
+  transform: translateX(100%);
+}
+.welcome-p2 .speed-line {
+  animation: speedSweep 700ms cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes speedSweep {
+  0%   { transform: translateX(100%); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateX(-200%); opacity: 0; }
+}
+
+/* ---------- DUST ---------- */
+.welcome-dust {
+  position: absolute;
+  bottom: 22%;
+  left: 30%;
+  right: 30%;
+  height: 100px;
+  pointer-events: none;
+  opacity: 0;
+}
+.welcome-p2 .welcome-dust,
+.welcome-p3 .welcome-dust { opacity: 1; }
+.dust-puff {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,147,46,0.45) 0%, rgba(200,147,46,0) 70%);
+  opacity: 0;
+  animation: dustRise 1400ms ease-out forwards;
+  animation-play-state: paused;
+}
+.welcome-p2 .dust-puff,
+.welcome-p3 .dust-puff { animation-play-state: running; }
+@keyframes dustRise {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.4); }
+  20%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.6); }
+}
+
+/* ---------- BULL ---------- */
+.welcome-bull-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(420px, 55vw, 760px);
+  /* bull starts off-screen right and charges in */
+  transform: translate(120%, -50%);
+  transition: transform 1300ms cubic-bezier(.16,.84,.32,1);
+  pointer-events: none;
+  z-index: 5;
+}
+.welcome-p2 .welcome-bull-wrap {
+  transform: translate(-50%, -50%);
+}
+.welcome-p3 .welcome-bull-wrap {
+  transform: translate(-50%, -50%);
+}
+.welcome-p4 .welcome-bull-wrap {
+  /* bull recedes & dims so wordmark gets clean stage */
+  transform: translate(-50%, -30%) scale(0.78);
+  opacity: 0.28;
+  filter: blur(1.5px);
+  transition: transform 700ms var(--ease-out), opacity 700ms var(--ease-out), filter 700ms var(--ease-out);
+}
+.welcome-p5 .welcome-bull-wrap {
+  /* compress to bottom-left into badge position */
+  transform: translate(-130%, 60%) scale(0.18);
+  opacity: 0;
+  transition: transform 800ms var(--ease-out), opacity 800ms var(--ease-out);
+}
+
+.bull-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.7));
+}
+/* head-toss in phase 3 — small rotation on the whole bull */
+.welcome-p3 .bull-svg {
+  animation: headToss 600ms cubic-bezier(.4,0,.2,1) 100ms;
+  transform-origin: 30% 60%;
+}
+@keyframes headToss {
+  0%   { transform: rotate(0deg); }
+  35%  { transform: rotate(-6deg); }
+  60%  { transform: rotate(2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* eye glints red at end */
+.welcome-p2 .bull-eye,
+.welcome-p3 .bull-eye,
+.welcome-p4 .bull-eye {
+  filter: drop-shadow(0 0 6px #B83A28);
+}
+.welcome-p3 .bull-eye {
+  animation: eyePulse 800ms ease-out;
+}
+@keyframes eyePulse {
+  0% { filter: drop-shadow(0 0 0 #B83A28); }
+  50% { filter: drop-shadow(0 0 14px #B83A28); }
+  100% { filter: drop-shadow(0 0 6px #B83A28); }
+}
+
+/* ---------- FLAG (emerges from mouth) ---------- */
+.welcome-flag-emit {
+  position: absolute;
+  /* mouth of the bull is at roughly viewBox 168/720 x, 230/460 y of svg */
+  left: 23%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.flag-pole {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6A6759 0%, #C9C2B3 50%, #6A6759 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transform-origin: left center;
+  transition: width 380ms cubic-bezier(.4,0,.2,1);
+}
+.welcome-p3 .flag-pole {
+  /* pole extends left — bull is facing left so flag goes left */
+  width: clamp(180px, 24vw, 340px);
+  transform: translateX(-100%);
+}
+.welcome-p4 .flag-pole {
+  width: clamp(180px, 24vw, 340px);
+  transform: translateX(-100%);
+}
+
+.flag-cloth {
+  position: absolute;
+  /* anchor at the END of the pole (left side) */
+  left: 0;
+  top: 0;
+  width: clamp(180px, 24vw, 340px);
+  height: clamp(110px, 16vw, 220px);
+  transform: translate(-100%, -50%) scaleX(0);
+  transform-origin: right center;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  transition: transform 600ms cubic-bezier(.16,.84,.32,1) 280ms;
+}
+.welcome-p3 .flag-cloth,
+.welcome-p4 .flag-cloth {
+  transform: translate(-100%, -50%) scaleX(1);
+}
+/* slight billow waver after open */
+.welcome-p4 .flag-cloth {
+  animation: billow 2.6s ease-in-out infinite alternate 1100ms;
+}
+@keyframes billow {
+  0%   { transform: translate(-100%, -50%) scaleX(1) skewY(0deg); }
+  100% { transform: translate(-100%, -50%) scaleX(1) skewY(-1.2deg); }
+}
+
+.fc-blue {
+  flex: 0 0 62.5%;
+  background: #1F4A8A;
+  position: relative;
+  overflow: hidden;
+}
+.fc-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out) 700ms;
+}
+.welcome-p3 .fc-stars,
+.welcome-p4 .fc-stars { opacity: 1; }
+
+.fc-stripes {
+  flex: 0 0 37.5%;
+  display: flex;
+  flex-direction: column;
+}
+.fc-stripes span { flex: 1; display: block; }
+.fc-red   { background: #B83A28; }
+.fc-white { background: #ECE5D6; }
+.fc-gold  { background: #C8932E; }
+
+.fc-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.18) 30%,
+      rgba(255,255,255,0.06) 55%,
+      rgba(0,0,0,0.18) 80%,
+      rgba(0,0,0,0) 100%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* ---------- WORDMARK ---------- */
+.welcome-wordmark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  z-index: 6;
+  pointer-events: none;
+}
+.ww-eyebrow {
+  font-family: var(--f-mono);
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.34em;
+  color: #C8932E;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 500ms var(--ease-out) 100ms, transform 500ms var(--ease-out) 100ms;
+}
+.welcome-p4 .ww-eyebrow, .welcome-p5 .ww-eyebrow { opacity: 1; transform: none; }
+
+.ww-title {
+  font-family: var(--f-hero);
+  font-weight: 700;
+  font-size: clamp(56px, 11vw, 180px);
+  line-height: 0.86;
+  color: #ECE5D6;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.85);
+}
+.ww-line {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(1.3);
+  filter: blur(10px);
+  transition:
+    opacity 280ms var(--ease-out),
+    transform 350ms cubic-bezier(.34,1.56,.64,1),
+    filter 280ms var(--ease-out);
+}
+.welcome-p4 .ww-l1 { opacity: 1; transform: scale(1); filter: blur(0); transition-delay: 240ms; }
+.welcome-p4 .ww-l2 { opacity: 1; transform: scale(1); filter: blur(0); transition-delay: 460ms; }
+.welcome-p5 .ww-l1, .welcome-p5 .ww-l2 { opacity: 1; transform: scale(1); filter: blur(0); }
+.ww-l2 { color: #B83A28; }
+
+/* letterpress thunk pulse on stamp */
+.welcome-p4 .ww-l1 { animation: stamp 280ms cubic-bezier(.4,0,.2,1) 240ms; }
+.welcome-p4 .ww-l2 { animation: stamp 280ms cubic-bezier(.4,0,.2,1) 460ms; }
+@keyframes stamp {
+  0%   { text-shadow: 0 6px 30px rgba(0,0,0,0.85); }
+  40%  { text-shadow: 0 6px 30px rgba(0,0,0,0.85), 0 0 80px rgba(200,147,46,0.6); }
+  100% { text-shadow: 0 6px 30px rgba(0,0,0,0.85); }
+}
+
+.ww-tag {
+  font-family: var(--f-mono);
+  font-size: clamp(11px, 1.2vw, 13px);
+  letter-spacing: 0.18em;
+  color: #C9C2B3;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms var(--ease-out) 800ms, transform 500ms var(--ease-out) 800ms;
+  text-transform: uppercase;
+}
+.welcome-p4 .ww-tag, .welcome-p5 .ww-tag { opacity: 1; transform: none; }
+
+/* fade out wordmark on exit */
+.welcome-p5 .welcome-wordmark { opacity: 0; transition: opacity 500ms var(--ease-out); }
+
+/* ---------- ID TICKER ---------- */
+.welcome-id {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: #C8932E;
+  letter-spacing: 0.16em;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out);
+}
+.welcome-p1 .welcome-id, .welcome-p2 .welcome-id, .welcome-p3 .welcome-id, .welcome-p4 .welcome-id {
+  opacity: 1;
+}
+.id-tick {
+  color: #B83A28;
+  animation: blink 900ms steps(2) infinite;
+  font-size: 13px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.id-line {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 0;
+  border-right: 0;
+  transition: max-width 1400ms steps(40, end);
+}
+.id-line::before {
+  content: "TGT: BULL CITY · BRG 270° · DURHAM, NC";
+}
+.welcome-p1 .id-line,
+.welcome-p2 .id-line,
+.welcome-p3 .id-line,
+.welcome-p4 .id-line { max-width: 360px; }
+
+/* ---------- SKIP ---------- */
+.welcome-skip {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: rgba(11, 13, 17, 0.7);
+  border: 1px solid rgba(201, 194, 179, 0.3);
+  color: #ECE5D6;
+  padding: 8px 14px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex; gap: 8px; align-items: center;
+  backdrop-filter: blur(4px);
+  transition: all 200ms var(--ease-out);
+  z-index: 8;
+}
+.welcome-skip:hover {
+  border-color: #B83A28;
+  background: rgba(184,58,40,0.15);
+  color: #ECE5D6;
+}
+
+/* ---------- PERSISTENT FLAG BADGE (unchanged) ---------- */
+.flag-badge {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 60;
+}
+.flag-btn {
+  background: var(--c-charcoal);
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-2);
+  padding: 6px 8px 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  transition: all 200ms var(--ease-out);
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+}
+.flag-btn:hover {
+  border-color: var(--c-red);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -10px rgba(0,0,0,0.6);
+}
+.durham-flag-svg {
+  display: block;
+  border-radius: 1px;
+}
+.flag-pulse {
+  position: absolute;
+  top: -3px; right: -3px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 0 0 rgba(184, 58, 40, 0.7);
+  animation: flagPulse 2.4s var(--ease-out) infinite;
+}
+@keyframes flagPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(184, 58, 40, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(184, 58, 40, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 58, 40, 0); }
+}
+
+.flag-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 11, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 70;
+  animation: fadeIn 240ms var(--ease-out);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.flag-panel-inner {
+  background: var(--c-charcoal);
+  border: 1px solid var(--c-brass-dim);
+  border-radius: var(--rad-3);
+  padding: 36px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  max-width: 380px;
+  text-align: center;
+}
+.flag-meaning {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: stretch;
+}
+.flag-meaning li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--c-bone-dim);
+}
+.fm-sw {
+  width: 18px; height: 18px;
+  border-radius: 2px;
+  border: 1px solid var(--c-line);
+  flex-shrink: 0;
+}
+.flag-foot {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--c-mute);
+  margin: 0;
+  text-transform: uppercase;
+}
+.flag-close {
+  background: transparent;
+  border: 1px solid var(--c-line);
+  color: var(--c-bone-dim);
+  padding: 8px 16px;
+  border-radius: var(--rad-2);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.flag-close:hover { color: var(--c-bone); border-color: var(--c-bone-dim); }
+
+@media (max-width: 720px) {
+  .flag-badge { bottom: 16px; left: 16px; }
+  .welcome-id { left: 20px; bottom: 20px; }
+  .welcome-skip { top: 16px; right: 16px; }
+  .welcome-bull-wrap { width: 92vw; }
+}
