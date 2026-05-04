@@ -1,6 +1,12 @@
 /* global React */
 const { useState, useEffect, useRef } = React;
 
+/* ---------- Booking URL — single source of truth ---------- */
+const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2oW6zGqgKv8Rc7MhWwjGwq_zvMrIMGln-B2QrGf9AmiCaY1z1fYYJSec81tN5cVAFp2T1lv6i9";
+
+/* Expose to other JSX modules loaded after this one */
+if (typeof window !== "undefined") window.BOOKING_URL = BOOKING_URL;
+
 /* ---------- Hooks & utilities ---------- */
 function useReveal() {
   const ref = useRef(null);
@@ -145,9 +151,9 @@ function Hero() {
           <button className="btn btn-primary" onClick={() => scrollToId("intake")}>
             Request a free project review <span className="arrow">→</span>
           </button>
-          <button className="btn btn-ghost" onClick={() => scrollToId("intake")}>
+          <a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
             Book a consultation
-          </button>
+          </a>
         </div>
 
         <ul className="hero-trust">
