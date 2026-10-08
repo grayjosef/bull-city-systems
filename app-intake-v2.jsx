@@ -9,7 +9,7 @@
  *   5. Submit → POST /api/intake → 72-hour confirmation panel
  *
  * On success, the confirmation page tells the visitor explicitly:
- * "Someone will contact you within 72 hours to schedule a 30-minute call."
+ * "I'll reach out within 72 hours to schedule a 15-minute call."
  * ===================================================================== */
 
 const SERVICE_DEFS = [
@@ -18,7 +18,7 @@ const SERVICE_DEFS = [
   { id: "intake_form",     label: "Customer intake form",  q: ["What does the form collect?", "Where should submissions go?"] },
   { id: "booking",         label: "Booking setup",         q: ["What kind of appointments?", "Avg session length?"] },
   { id: "payments",        label: "Online payments",       q: ["Stripe, Square, or no preference?", "One-time, recurring, or both?"] },
-  { id: "automation",      label: "Automation",            q: ["What's the manual task you keep repeating?", "Tools currently involved?"] },
+  { id: "ai_automation",  label: "AI / automation",      q: ["What's the manual task you keep repeating?", "Tools currently involved?", "Any AI tools in use today?"] },
   { id: "m365",            label: "Microsoft 365 cleanup", q: ["How many users?", "What's broken or messy?"] },
   { id: "cloud",           label: "Cloud setup or migration", q: ["Which platform (Google, Microsoft, AWS)?", "Migrating from where?"] },
   { id: "it_support",      label: "IT support",            q: ["How many endpoints?", "Recurring issues?"] },
@@ -119,7 +119,7 @@ function Intake() {
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 50);
     } catch (err) {
-      setErrMsg(err.message || "Something went wrong. Please try again or email quotes@bullcitysystems.com directly.");
+      setErrMsg(err.message || "Something went wrong. Please try again or email hello@bullcitysystems.com directly.");
       setPhase("form");
     }
   }
@@ -132,10 +132,10 @@ function Intake() {
     <section id="intake" className="section section-intake">
       <div className="container">
         <div className="section-head">
-          <span className="section-num">08</span>
+          <span className="section-num">10</span>
           <h2 className="section-title">Tell me what you need fixed, built, or improved.</h2>
           <p className="section-lead">
-            Pick every service that fits. I'll review your request and reach out within 72 hours to schedule a 30-minute call where we'll talk through the plan and pricing.
+            Pick every service that fits. I'll review your request and reach out within 72 hours to schedule a 15-minute call where we'll talk through the plan and pricing.
           </p>
         </div>
 
@@ -259,7 +259,7 @@ function Intake() {
 
           <div className="intake-submit-row">
             <button type="submit" className="btn btn-primary btn-lg" disabled={phase === "submitting"}>
-              {phase === "submitting" ? "Sending…" : "Request My Free Project Review"}
+              {phase === "submitting" ? "Sending…" : "Request My Free Discovery Call"}
             </button>
             <p className="intake-disclaimer">
               No obligation. No mystery pricing. I'll review your request and reach out within 72 hours.
@@ -290,7 +290,7 @@ function IntakeSuccess({ name, services, preferredNextStep }) {
           <span className="success-mark">✓</span>
           <h2>Got it{name ? `, ${name.split(" ")[0]}` : ""}.</h2>
           <p className="intake-success-lead">
-            Your request is in. <strong>Someone will contact you within 72 hours</strong> to discuss your plan, and at that time we'll book a <strong>30-minute call</strong> to walk through scope and pricing together.
+            Your request is in. <strong>I'll reach out within 72 hours</strong> to discuss your plan, and at that time we'll book a <strong>15-minute call</strong> to walk through scope and pricing together.
           </p>
 
           {showBookingLink && bookingUrl && (
@@ -308,7 +308,7 @@ function IntakeSuccess({ name, services, preferredNextStep }) {
               <ol className="success-steps">
                 <li>I review what you submitted and prepare an initial read.</li>
                 <li>I reach out by your preferred method within 72 hours.</li>
-                <li>We schedule a 30-minute discovery call to align on the plan.</li>
+                <li>We schedule a 15-minute discovery call to align on the plan.</li>
                 <li>You get a written quote with clear scope. No surprises.</li>
               </ol>
             </div>
@@ -328,7 +328,7 @@ function IntakeSuccess({ name, services, preferredNextStep }) {
             <div className="success-row">
               <span className="success-label">Need to reach me sooner</span>
               <p className="success-contact">
-                <a href="mailto:quotes@bullcitysystems.com">quotes@bullcitysystems.com</a>
+                <a href="mailto:hello@bullcitysystems.com">hello@bullcitysystems.com</a>
               </p>
             </div>
           </div>

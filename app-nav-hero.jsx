@@ -64,7 +64,6 @@ function Nav() {
           <BCSMark />
           <span className="brand-text">
             <span className="brand-name">Bull City Systems</span>
-            <span className="brand-sub">An Arc &amp; Anchor studio</span>
           </span>
         </a>
         <nav className="nav-links">
@@ -75,10 +74,10 @@ function Nav() {
           ))}
         </nav>
         <div className="nav-cta">
-          <button className="btn btn-ghost" onClick={() => scrollToId("intake")}>
-            Free project review
+          <a className="btn btn-ghost" href="/book/">
+            Free discovery call
             <span className="arrow">→</span>
-          </button>
+          </a>
         </div>
         <button className="nav-burger" aria-label="Menu" onClick={() => setOpen((v) => !v)}>
           <span /><span /><span />
@@ -92,9 +91,9 @@ function Nav() {
               {l.label}
             </a>
           ))}
-          <button className="btn btn-primary" onClick={() => { setOpen(false); scrollToId("intake"); }}>
-            Free project review <span className="arrow">→</span>
-          </button>
+          <a className="btn btn-primary" href="/book/" onClick={() => setOpen(false)}>
+            Free discovery call <span className="arrow">→</span>
+          </a>
         </div>
       )}
     </header>
@@ -147,14 +146,26 @@ function Hero() {
           to Microsoft 365, automation, cloud, and day-to-day IT support.
         </p>
 
+        <blockquote className="hero-promise">
+          "When you hire Bull City Systems, you're my only customer. I walk you
+          through it hand in hand, from first call to final delivery, and I don't
+          stop until it's done the way you want it."
+          <cite>— Josef Gray, founder</cite>
+        </blockquote>
+
         <div className="hero-ctas">
-          <button className="btn btn-primary" onClick={() => scrollToId("intake")}>
-            Request a free project review <span className="arrow">→</span>
-          </button>
-          <a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-            Book a free discovery call
+          <a className="btn btn-primary" href="/book/">
+            Book a free discovery call <span className="arrow">→</span>
           </a>
+          <button className="btn btn-ghost" onClick={() => scrollToId("services")}>
+            Browse services
+          </button>
         </div>
+
+        <p className="hero-capacity">
+          I take on one automation build at a time. If the calendar's full,
+          I'll tell you when the next slot opens.
+        </p>
 
         <ul className="hero-trust">
           <li><Tick /> <span className="t-vet">Veteran-owned</span></li>

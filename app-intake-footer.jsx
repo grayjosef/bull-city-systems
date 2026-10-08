@@ -18,7 +18,6 @@ function Footer() {
             <div>
               <div className="footer-name">Bull City Systems</div>
               <div className="footer-sub"><span className="t-vet">Veteran-owned</span> technical studio<br />serving Durham and the Triangle</div>
-              <div className="footer-arc">An Arc &amp; Anchor studio</div>
             </div>
           </div>
 
@@ -37,9 +36,8 @@ function Footer() {
             <span className="eyebrow-mute">Contact</span>
             <ul>
               <li><a href="mailto:hello@bullcitysystems.com">hello@bullcitysystems.com</a></li>
-              <li><a href="mailto:quotes@bullcitysystems.com">quotes@bullcitysystems.com</a></li>
               <li><span className="t-mute">Durham, North Carolina</span></li>
-              <li><a href="#intake" onClick={(e) => { e.preventDefault(); scrollToId("intake"); }}>Free project review →</a></li>
+              <li><a href="/book/">Free discovery call →</a></li>
             </ul>
           </div>
 

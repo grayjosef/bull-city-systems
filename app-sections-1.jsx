@@ -65,7 +65,7 @@ const SERVICES = [
   {
     n: "03",
     title: "Messaging & copy",
-    body: "Words that sell. We sharpen your story, your offers, and your calls to action so a visitor understands why you in seconds, not minutes.",
+    body: "Words that sell. I sharpen your story, your offers, and your calls to action so a visitor understands why you in seconds, not minutes.",
     points: ["Website copy", "Offer & positioning", "Email & sales collateral"],
     accent: "blue",
   },
@@ -128,6 +128,13 @@ const SERVICES = [
     accent: "brass",
     cta: "email",
   },
+  {
+    n: "12",
+    title: "AI integrations",
+    body: "Real AI in your real systems, doing real work — not a chatbot widget. I build AI that reads your docs, routes your leads, drafts your replies, and runs your queues.",
+    points: ["Intake that thinks", "Internal copilots over your docs", "Support that closes itself", "Operational agents"],
+    accent: "blue",
+  },
 ];
 
 function Services() {
@@ -141,7 +148,7 @@ function Services() {
           </div>
           <div className="services-head">
             <h2 className="h-section">
-              Eleven disciplines.<br />
+              Twelve disciplines.<br />
               <span className="t-mute">Small business to enterprise.</span>
             </h2>
             <p className="lede services-lede">
@@ -184,7 +191,7 @@ function ServiceCard({ s }) {
       {s.cta === "email" && (
         <a
           className="svc-quote-cta"
-          href={"mailto:info@bullcitysystems.com?subject=" + encodeURIComponent("Quote request — " + s.title) + "&body=" + encodeURIComponent("Hi —\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n— What it does:\n— Who uses it:\n— Rough timeline:\n— Approximate budget:\n\nThanks.\n")}
+          href={"mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request — " + s.title) + "&body=" + encodeURIComponent("Hi —\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n— What it does:\n— Who uses it:\n— Rough timeline:\n— Approximate budget:\n\nThanks.\n")}
         >
           <span className="svc-quote-dot" />
           Email for a quote <span className="arrow">→</span>
@@ -207,7 +214,7 @@ const REASONS = [
   },
   {
     t: "Local perspective",
-    d: "Durham-based. We know the rhythm of the Triangle, the businesses here, and the constraints they actually work under.",
+    d: "Durham-based. I know the rhythm of the Triangle, the businesses here, and the constraints they actually work under.",
   },
   {
     t: "Affordable by design",
@@ -229,8 +236,8 @@ function Why() {
             <span className="numeral">05 / Why Bull City Systems</span>
           </div>
           <h2 className="h-section why-title">
-            We build systems the way<br />
-            <span className="t-mute">we'd want them built for us.</span>
+            I build systems the way<br />
+            <span className="t-mute">I'd want them built for me.</span>
           </h2>
         </div>
 

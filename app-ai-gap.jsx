@@ -4,7 +4,7 @@ const { useState: useStateAI, useEffect: useEffectAI, useRef: useRefAI } = React
 /* =================================================================
    AI GAP — the framing problem.
    Most companies use AI as a spell-checker. The capability is 10x
-   what they're using. We close the gap.
+   what they're using. I close the gap.
    ================================================================= */
 
 const SHALLOW = [
@@ -148,7 +148,7 @@ function AIGap() {
 
           <article className="aigap-col aigap-col--deep">
             <header className="aigap-col-head">
-              <span className="aigap-col-eyebrow">What we build</span>
+              <span className="aigap-col-eyebrow">What I build</span>
               <h3 className="aigap-col-title">What it can actually do for you</h3>
             </header>
             <ul className="aigap-list">
@@ -169,15 +169,12 @@ function AIGap() {
         <div className="aigap-cta">
           <div className="aigap-cta-rule" />
           <h3 className="aigap-cta-text">
-            <span className="t-mute">We close the gap.</span><br />
+            <span className="t-mute">I close the gap.</span><br />
             <span className="aigap-cta-strong">Real AI integrations, in your real systems, doing real work.</span>
           </h3>
-          <a
-            className="aigap-cta-btn"
-            href={"mailto:info@bullcitysystems.com?subject=" + encodeURIComponent("AI integration — discovery") + "&body=" + encodeURIComponent("Hi —\n\nI'd like to talk about AI integrations for our business. Quick context:\n\n— What we use AI for today:\n— Where we know we should be using it but aren't:\n— A workflow we'd love to automate end-to-end:\n\nThanks.\n")}
-          >
+          <a className="aigap-cta-btn" href="/book/">
             <span className="aigap-cta-dot" />
-            Email for a discovery call <span className="arrow">→</span>
+            Book a free discovery call <span className="arrow">→</span>
           </a>
         </div>
       </div>

@@ -174,8 +174,34 @@
 .hero-ctas {
   display: flex;
   gap: 12px;
-  margin-bottom: 56px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
+}
+.hero-promise {
+  max-width: 640px;
+  margin: 0 0 32px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--c-brass);
+  background: rgba(200, 147, 46, 0.06);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--c-bone);
+  font-style: italic;
+}
+.hero-promise cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-style: normal;
+  font-family: var(--f-mono);
+  color: var(--c-bone-dim);
+}
+.hero-capacity {
+  max-width: 640px;
+  margin: 0 0 48px;
+  font-size: 14px;
+  color: var(--c-bone-dim);
+  font-family: var(--f-mono);
 }
 .hero-trust {
   list-style: none;

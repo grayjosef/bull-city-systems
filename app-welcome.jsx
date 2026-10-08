@@ -14,7 +14,7 @@ const { useState: useStateW, useEffect: useEffectW, useRef: useRefW } = React;
                     Seven stars settle on the blue field.
      P4 (3300–4400) Wordmark "BULL CITY / SYSTEMS" stamps in over
                     flag, with letterpress thunk + red SYSTEMS.
-                    Subtitle: "Built by an Airborne Ranger.
+                    Subtitle: "Built by a Green Beret.
                     Built for Durham." appears.
      P5 (4400–5200) Composition compresses into bottom-left flag
                     badge position; site rises into view.
@@ -124,12 +124,12 @@ function WelcomeIntro() {
 
         {/* WORDMARK — stamps in after flag is open */}
         <div className="welcome-wordmark">
-          <span className="ww-eyebrow">SFC J. GRAY · 3/75 · DURHAM, NC</span>
+          <span className="ww-eyebrow">JOSEF GRAY · SPECIAL FORCES VETERAN · DURHAM, NC</span>
           <h1 className="ww-title">
             <span className="ww-line ww-l1">BULL CITY</span>
             <span className="ww-line ww-l2">SYSTEMS</span>
           </h1>
-          <span className="ww-tag">Built by an Airborne Ranger. Built for Durham.</span>
+          <span className="ww-tag">Built by a Green Beret. Built for Durham.</span>
         </div>
 
         {/* mono ticker bottom-left */}

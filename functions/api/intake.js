@@ -2,7 +2,7 @@
  * Cloudflare Pages Function: /api/intake
  *
  * Receives the multi-service intake form. For each submission:
- *  1. Sends a notification email to quotes@bullcitysystems.com via Resend
+ *  1. Sends a notification email to the address in NOTIFY_TO_EMAIL via Resend
  *  2. Writes a row to the Bull City Systems Leads Google Sheet
  *     (one row per submission; customer email is the key for grouping)
  *
@@ -93,7 +93,7 @@ export async function onRequestPost({ request, env }) {
   return json({
     ok: true,
     message: "Submission received",
-    nextStep: "Someone will contact you within 72 hours to schedule a 30-minute call.",
+    nextStep: "I'll reach out within 72 hours to schedule a 15-minute call.",
   }, 200, corsHeaders);
 }
 

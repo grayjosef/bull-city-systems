@@ -14,7 +14,7 @@ const TIERS = [
       "Domain & hosting setup",
     ],
     cta: "Start small",
-    go: "WE SHIP IN 72 HOURS",
+    go: "I SHIP IN 72 HOURS",
   },
   {
     name: "Business Website",
@@ -29,7 +29,7 @@ const TIERS = [
     ],
     cta: "Most common",
     feature: true,
-    go: "WE SHIP IN 14 DAYS",
+    go: "I SHIP IN 14 DAYS",
   },
   {
     name: "Growth System",
@@ -48,7 +48,7 @@ const TIERS = [
     name: "Custom Technical Work",
     price: "Custom",
     sub: "scoped quote",
-    desc: "Migrations, internal tools, app prototypes, IT cleanup, advisory. Quoted clearly before we start.",
+    desc: "Migrations, internal tools, app prototypes, IT cleanup, advisory. Quoted clearly before I start.",
     items: [
       "Discovery call & scope doc",
       "Fixed or hourly options",
@@ -61,7 +61,7 @@ const TIERS = [
     name: "Enterprise & Training",
     price: "SOW",
     sub: "or day-rate",
-    desc: "For larger orgs and team-wide trainings. Procurement-friendly statements of work, fixed-fee workshops, or a senior operator embedded for the duration.",
+    desc: "For teams that need a senior hand for a defined engagement. Fixed-fee workshops, team trainings, or scoped advisory — quoted clearly, delivered personally.",
     items: [
       "Fixed-fee SOW projects",
       "Half-day & full-day workshops",
@@ -116,12 +116,12 @@ function Pricing() {
                   <li key={i}><span className="tier-tick">+</span>{i}</li>
                 ))}
               </ul>
-              <button
+              <a
                 className={"btn " + (t.feature ? "btn-primary" : "btn-ghost") + " tier-cta"}
-                onClick={() => scrollToId("intake")}
+                href="/book/"
               >
                 {t.cta} <span className="arrow">→</span>
-              </button>
+              </a>
             </article>
           ))}
         </div>
