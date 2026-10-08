@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Working Session — Bull City Systems</title>
+<meta name="description" content="Start with a free discovery call. Then book a working session with a $99 refundable deposit, applied in full to your quoted project.">
+<style>
+  :root { --bg:#0c0e11; --panel:#14171c; --line:#262b33; --txt:#e8eaed; --dim:#9aa0a8;
+          --amber:#f6bf26; --green:#33b679; --red:#e67c73; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         line-height:1.5; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+  .kicker { color:var(--amber); font-size:13px; letter-spacing:2px; text-transform:uppercase; }
+  h1 { font-size:32px; margin:12px 0 8px; }
+  .lede { color:var(--dim); font-size:17px; margin:0 0 32px; }
+  .stages { display:grid; gap:16px; margin-bottom:32px; }
+  .stage { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .stage-num { display:inline-block; background:var(--amber); color:#000; font-weight:700;
+               font-size:13px; width:28px; height:28px; line-height:28px; text-align:center;
+               border-radius:50%; margin-bottom:8px; }
+  .stage h2 { margin:0 0 6px; font-size:19px; }
+  .stage p { margin:0 0 12px; color:var(--dim); font-size:15px; }
+  .btn { display:inline-block; background:var(--amber); color:#000; font-weight:700;
+         padding:12px 24px; border-radius:8px; text-decoration:none; border:0; cursor:pointer;
+         font-size:16px; }
+  .btn:hover { filter:brightness(1.08); }
+  .btn-ghost { background:transparent; color:var(--txt); border:1px solid var(--line); }
+  .deposit-form { display:grid; gap:12px; margin-top:12px; }
+  .deposit-form input, .deposit-form textarea {
+    background:var(--bg); border:1px solid var(--line); color:var(--txt);
+    padding:12px; border-radius:8px; font-size:15px; width:100%; }
+  .fine { color:var(--dim); font-size:13px; margin-top:16px; }
+  .err { color:var(--red); font-size:14px; min-height:20px; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kicker">Bull City Systems</span>
+  <h1>Let's work together.</h1>
+  <p class="lede">Two steps. No pressure, no surprises.</p>
+
+  <div class="stages">
+    <div class="stage">
+      <span class="stage-num">1</span>
+      <h2>Free discovery call</h2>
+      <p>15 minutes. We talk through what you need, I tell you straight whether I can take it on and what it'd look like. No charge, no pitch.</p>
+      <a class="btn btn-ghost" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2oW6zGqgKv8Rc7MhWwjGwq_zvMrIMGln-B2QrGf9AmiCaY1z1fYYJSec81tN5cVAFp2T1lv6i9" target="_blank" rel="noopener">Book free discovery call →</a>
+    </div>
+
+    <div class="stage">
+      <span class="stage-num">2</span>
+      <h2>Working session — $99 refundable deposit</h2>
+      <p>After the discovery call, book a 60 or 90 minute working session. The $99 deposit is applied in full to whatever we quote and scope together. If we don't move forward, it's refunded.</p>
+      <form class="deposit-form" id="depositForm">
+        <input type="text" id="dName" placeholder="Your name" required autocomplete="name">
+        <input type="email" id="dEmail" placeholder="Email address" required autocomplete="email">
+        <textarea id="dNotes" rows="3" placeholder="What did we discuss on the discovery call? (optional)"></textarea>
+        <div class="err" id="dErr"></div>
+        <button type="submit" class="btn" id="dBtn">Pay $99 deposit →</button>
+      </form>
+      <p class="fine">Secure checkout via Stripe. You'll pick your session time right after payment.</p>
+    </div>
+  </div>
+
+  <p class="fine"><a href="/" style="color:var(--dim)">← Back to bullcitysystems.com</a></p>
+</div>
+
+<script>
+document.getElementById("depositForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const err = document.getElementById("dErr");
+  const btn = document.getElementById("dBtn");
+  err.textContent = "";
+  btn.disabled = true;
+  btn.textContent = "Starting checkout…";
+  try {
+    const res = await fetch("/api/create-deposit-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: document.getElementById("dName").value.trim(),
+        email: document.getElementById("dEmail").value.trim(),
+        notes: document.getElementById("dNotes").value.trim(),
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.url) throw new Error(data.error || "Checkout failed.");
+    window.location.href = data.url;
+  } catch (ex) {
+    err.textContent = ex.message || "Something went wrong. Try again.";
+    btn.disabled = false;
+    btn.textContent = "Pay $99 deposit →";
+  }
+});
+</script>
+</body>
+</html>

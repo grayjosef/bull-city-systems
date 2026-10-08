@@ -46,8 +46,9 @@ function Footer() {
           <div className="footer-col">
             <span className="eyebrow-mute">Community</span>
             <ul>
-              <li><a href="https://moneyoutofpolitics.org" target="_blank" rel="noopener noreferrer">Money Out of Politics ↗</a></li>
-              <li><span className="t-mute">A nonprofit by the founder</span></li>
+              <li><a href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network ↗</a></li>
+              <li><a href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger ↗</a></li>
+              <li><span className="t-mute">Civic tech by the founder</span></li>
               <li><span className="t-mute">Bull City · NC</span></li>
               <li><span className="t-mute">35.99° N · 78.90° W</span></li>
             </ul>

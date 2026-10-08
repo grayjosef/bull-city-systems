@@ -152,7 +152,7 @@ function Hero() {
             Request a free project review <span className="arrow">→</span>
           </button>
           <a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-            Book a consultation
+            Book a free discovery call
           </a>
         </div>
 
