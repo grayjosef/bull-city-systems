@@ -2,14 +2,14 @@
 const { useState: useStateW, useEffect: useEffectW, useRef: useRefW } = React;
 
 /* =================================================================
-   WELCOME INTRO v3 — bull charges in, slings flag, wordmark stamps
+   WELCOME INTRO v3: bull charges in, slings flag, wordmark stamps
    Storyboard:
      P1 (0–800)    Black. Far horizon line. Mono ID ticker types.
                    Distant rumble (visual: ground line trembles).
      P2 (800–2200) Bull charges in from RIGHT against gold sun.
                    Speed lines, dust kick, slight camera shake on stop.
      P3 (2200–3300) Bull stops centered. Flag pole in mouth.
-                    Bull tosses head — flag UNFURLS violently from
+                    Bull tosses head, flag UNFURLS violently from
                     its mouth, snapping open to fill the sky.
                     Seven stars settle on the blue field.
      P4 (3300–4400) Wordmark "BULL CITY / SYSTEMS" stamps in over
@@ -58,7 +58,7 @@ function WelcomeIntro() {
          role="button"
          aria-label="Skip intro">
 
-      {/* CAMERA — everything inside shakes on impact */}
+      {/* CAMERA: everything inside shakes on impact */}
       <div className="welcome-cam">
 
         {/* Distant horizon + sun */}
@@ -122,7 +122,7 @@ function WelcomeIntro() {
           </div>
         </div>
 
-        {/* WORDMARK — stamps in after flag is open */}
+        {/* WORDMARK: stamps in after flag is open */}
         <div className="welcome-wordmark">
           <span className="ww-eyebrow">JOSEF GRAY · SPECIAL FORCES VETERAN · DURHAM, NC</span>
           <h1 className="ww-title">
@@ -147,7 +147,7 @@ function WelcomeIntro() {
 }
 
 /* ----------------------------------------------------------------
-   BULL SVG — silhouette, properly proportioned, mouth open w/ pole
+   BULL SVG: silhouette, properly proportioned, mouth open w/ pole
    ---------------------------------------------------------------- */
 function BullSVG() {
   return (
@@ -167,13 +167,13 @@ function BullSVG() {
       {/* shadow under bull */}
       <ellipse cx="360" cy="408" rx="190" ry="14" fill="rgba(0,0,0,0.55)" />
 
-      {/* HORNS — drawn first so the head goes over their roots */}
+      {/* HORNS: drawn first so the head goes over their roots */}
       <g className="bull-horns" fill="#ECE5D6" stroke="#0B0D11" strokeWidth="2" strokeLinejoin="round">
         <path d="M250,118 C 220,98 192,78 176,52 C 178,72 196,98 218,116 L 232,128 Z" />
         <path d="M412,118 C 442,98 470,78 486,52 C 484,72 466,98 444,116 L 430,128 Z" />
       </g>
 
-      {/* HEAD + BODY — single composite path (bull facing left, charging) */}
+      {/* HEAD + BODY: single composite path (bull facing left, charging) */}
       <g className="bull-body">
         <path
           fill="url(#bull-fill)"
@@ -224,7 +224,7 @@ function BullSVG() {
         {/* nose ring */}
         <circle className="bull-ring" cx="186" cy="220" r="11"
                 fill="none" stroke="#C8932E" strokeWidth="2.6" />
-        {/* mouth gap (where flag pole emerges) — small dark slit */}
+        {/* mouth gap (where flag pole emerges): small dark slit */}
         <path d="M170,224 Q 158,228 168,236 Q 178,232 184,228 Z" fill="#0B0D11" />
 
         {/* shoulder hump */}
@@ -242,7 +242,7 @@ function BullSVG() {
         <line x1="332" y1="358" x2="332" y2="402" stroke="#0B0D11" strokeWidth="2.5" />
         <line x1="402" y1="358" x2="402" y2="402" stroke="#0B0D11" strokeWidth="2.5" />
 
-        {/* tail — flicks behind */}
+        {/* tail: flicks behind */}
         <path
           d="M496,294 C 530,304 542,326 522,356 L 514,348 C 530,330 520,312 496,308 Z"
           fill="url(#bull-fill)" stroke="#ECE5D6" strokeWidth="2.5" strokeLinejoin="round" />
@@ -257,7 +257,7 @@ function BullSVG() {
 }
 
 /* =====================================================
-   Persistent Durham Flag — pinned to viewport
+   Persistent Durham Flag: pinned to viewport
    ===================================================== */
 function DurhamFlagBadge() {
   const [open, setOpen] = useStateW(false);
@@ -265,7 +265,7 @@ function DurhamFlagBadge() {
     <div className={"flag-badge" + (open ? " flag-open" : "")}>
       <button className="flag-btn"
               onClick={() => setOpen((v) => !v)}
-              aria-label="Durham, NC — flag"
+              aria-label="Durham, NC flag"
               title="Durham, NC">
         <DurhamFlagSVG />
         <span className="flag-pulse" />
@@ -276,10 +276,10 @@ function DurhamFlagBadge() {
             <span className="numeral">DURHAM, NC</span>
             <DurhamFlagSVG large />
             <ul className="flag-meaning">
-              <li><span className="fm-sw" style={{ background: "#1F4A8A" }} />Royal blue — courage</li>
-              <li><span className="fm-sw" style={{ background: "#B83A28" }} />Red — action &amp; progress</li>
-              <li><span className="fm-sw" style={{ background: "#C8932E" }} />Gold — quality in growth</li>
-              <li><span className="fm-sw" style={{ background: "#ECE5D6" }} />White — high ideals</li>
+              <li><span className="fm-sw" style={{ background: "#1F4A8A" }} />Royal blue: courage</li>
+              <li><span className="fm-sw" style={{ background: "#B83A28" }} />Red: action &amp; progress</li>
+              <li><span className="fm-sw" style={{ background: "#C8932E" }} />Gold: quality in growth</li>
+              <li><span className="fm-sw" style={{ background: "#ECE5D6" }} />White: high ideals</li>
             </ul>
             <p className="flag-foot">Seven stars · The Pleiades · The New Spirit of Durham</p>
             <button className="flag-close" onClick={() => setOpen(false)}>Close</button>

@@ -27,7 +27,7 @@ function Problem() {
           <p className="lede problem-lede">
             An outdated website, a broken intake form, manual busywork, scattered files,
             weak automation, and a messy Microsoft 365 setup are not separate annoyances.
-            They are connected business problems — and they compound every week you wait.
+            They are connected business problems, and they compound every week you wait.
           </p>
         </div>
 
@@ -51,14 +51,14 @@ const SERVICES = [
   {
     n: "01",
     title: "Website design & development",
-    body: "Custom websites built to load fast, look sharp, and turn visitors into customers — designed around your brand, engineered to perform.",
+    body: "Custom websites built to load fast, look sharp, and turn visitors into customers, designed around your brand, engineered to perform.",
     points: ["Custom design & build", "Mobile-first responsive", "SEO basics & analytics"],
     accent: "blue",
   },
   {
     n: "02",
     title: "Branding & identity",
-    body: "Logos, visual identity, and brand systems that make you look like the business you're becoming — not a template someone else is also using.",
+    body: "Logos, visual identity, and brand systems that make you look like the business you're becoming, not a template someone else is also using.",
     points: ["Logo & visual identity", "Brand guidelines", "Marketing collateral"],
     accent: "brass",
   },
@@ -72,21 +72,21 @@ const SERVICES = [
   {
     n: "04",
     title: "Business development",
-    body: "Go-to-market strategy, offer design, and lead systems — the business thinking that has to come before the technology, from someone who's operated.",
+    body: "Go-to-market strategy, offer design, and lead systems: the business thinking that has to come before the technology, from someone who's operated.",
     points: ["Offer design", "Lead systems & intake", "Growth roadmaps"],
     accent: "brick",
   },
   {
     n: "05",
     title: "Software engineering",
-    body: "Senior-level engineering capacity for teams that need it: architecture reviews, code audits, and technical leadership on demand — no agency bloat.",
+    body: "Senior-level engineering capacity for teams that need it: architecture reviews, code audits, and technical leadership on demand, no agency bloat.",
     points: ["Architecture reviews", "Code audits", "Fractional tech leadership"],
     accent: "brass",
   },
   {
     n: "06",
     title: "Custom software builds",
-    body: "Bespoke software built end-to-end — internal tools, customer portals, dashboards, scheduling systems. Scoped, quoted, and delivered. The things off-the-shelf SaaS can't do.",
+    body: "Bespoke software built end-to-end: internal tools, customer portals, dashboards, scheduling systems. Scoped, quoted, and delivered. The things off-the-shelf SaaS can't do.",
     points: ["Discovery & scoping", "Full-stack build", "Deploy & maintenance"],
     accent: "blue",
     cta: "email",
@@ -94,7 +94,7 @@ const SERVICES = [
   {
     n: "07",
     title: "Custom cloud applications",
-    body: "Cloud-native applications designed to scale — architected on modern infrastructure, deployed with CI/CD, monitored in production. Built for growth, not just launch.",
+    body: "Cloud-native applications designed to scale, architected on modern infrastructure, deployed with CI/CD, monitored in production. Built for growth, not just launch.",
     points: ["Cloud architecture", "CI/CD pipelines", "Monitoring & scaling"],
     accent: "brick",
     cta: "email",
@@ -102,7 +102,7 @@ const SERVICES = [
   {
     n: "08",
     title: "IT security",
-    body: "Security baselines, audits, and hardening for small businesses that can't afford a breach — MFA everywhere, backups that work, endpoint protection, phishing-resistant setups.",
+    body: "Security baselines, audits, and hardening for small businesses that can't afford a breach: MFA everywhere, backups that work, endpoint protection, phishing-resistant setups.",
     points: ["Security audits", "MFA & access hardening", "Backup & recovery"],
     accent: "brass",
   },
@@ -116,14 +116,14 @@ const SERVICES = [
   {
     n: "10",
     title: "Cloud infrastructure",
-    body: "Cloud architecture, migrations, and Microsoft 365 management — set up right, secured, documented, and handed back to you with training.",
+    body: "Cloud architecture, migrations, and Microsoft 365 management, set up right, secured, documented, and handed back to you with training.",
     points: ["M365 setup & migration", "Cloud architecture", "Backup & compliance"],
     accent: "brick",
   },
   {
     n: "11",
     title: "Hardware consulting",
-    body: "Workstations, networking, point-of-sale, field hardware — spec'd, sourced, and set up for how your team actually works. No oversold gear, no underpowered regrets.",
+    body: "Workstations, networking, point-of-sale, field hardware: spec'd, sourced, and set up for how your team actually works. No oversold gear, no underpowered regrets.",
     points: ["Hardware spec & sourcing", "Network setup", "POS & field systems"],
     accent: "brass",
     cta: "email",
@@ -131,7 +131,7 @@ const SERVICES = [
   {
     n: "12",
     title: "AI integrations",
-    body: "Real AI in your real systems, doing real work — not a chatbot widget. I build AI that reads your docs, routes your leads, drafts your replies, and runs your queues.",
+    body: "Real AI in your real systems, doing real work. Not a chatbot widget. I build AI that reads your docs, routes your leads, drafts your replies, and runs your queues.",
     points: ["Intake that thinks", "Internal copilots over your docs", "Support that closes itself", "Operational agents"],
     accent: "blue",
   },
@@ -191,7 +191,7 @@ function ServiceCard({ s }) {
       {s.cta === "email" && (
         <a
           className="svc-quote-cta"
-          href={"mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request — " + s.title) + "&body=" + encodeURIComponent("Hi —\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n— What it does:\n— Who uses it:\n— Rough timeline:\n— Approximate budget:\n\nThanks.\n")}
+          href={"mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request: " + s.title) + "&body=" + encodeURIComponent("Hi,\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n- What it does:\n- Who uses it:\n- Rough timeline:\n- Approximate budget:\n\nThanks.\n")}
         >
           <span className="svc-quote-dot" />
           Email for a quote <span className="arrow">→</span>
@@ -205,12 +205,12 @@ function ServiceCard({ s }) {
 const REASONS = [
   {
     t: "Pressure-tested judgment",
-    d: "Built in environments where the wrong call has consequences — translated into calm, deliberate technical work for small businesses.",
+    d: "Built in environments where the wrong call has consequences, translated into calm, deliberate technical work for small businesses.",
   },
   {
     t: "Veteran-owned discipline",
     veteran: true,
-    d: "Showing up, finishing things, and writing it down. Not as a marketing line — as the operating system.",
+    d: "Showing up, finishing things, and writing it down. Not as a marketing line, as the operating system.",
   },
   {
     t: "Local perspective",

@@ -2,7 +2,7 @@
 const { useState: useStateAI, useEffect: useEffectAI, useRef: useRefAI } = React;
 
 /* =================================================================
-   AI GAP — the framing problem.
+   AI GAP: the framing problem.
    Most companies use AI as a spell-checker. The capability is 10x
    what they're using. I close the gap.
    ================================================================= */
@@ -18,7 +18,7 @@ const DEEP = [
   { l: "Intake that thinks",          d: "Reads the lead, scores it, routes to the right person, drafts the reply" },
   { l: "Internal copilots over your docs", d: "Your team asks a question, gets the actual answer from your SOPs and tickets" },
   { l: "Support that closes itself",  d: "Drafts replies grounded in your real KB and product, escalates only when needed" },
-  { l: "Operational agents",          d: "Watches a queue, takes action, writes back to the system. Not chat — work." },
+  { l: "Operational agents",          d: "Watches a queue, takes action, writes back to the system. Not chat, work." },
 ];
 
 /* Animated counter used in the capability meter */
@@ -78,7 +78,7 @@ function AIGap() {
           small and mid-sized businesses is the largest unrecognized competitive
           disadvantage in your market right now. It widens every week. The companies
           that close it become structurally faster, cheaper, and harder to compete
-          with — quietly, and before anyone announces it.
+          with, quietly, and before anyone announces it.
         </p>
 
         {/* CAPABILITY METER */}
@@ -116,7 +116,7 @@ function AIGap() {
             <span className="delta-rule" />
             <span className="delta-label">
               <span className="delta-num">88<span className="delta-pct">%</span></span>
-              <span className="delta-text">unrealized — the gap your competitors are filling</span>
+              <span className="delta-text">unrealized: the gap your competitors are filling</span>
             </span>
             <span className="delta-rule" />
           </div>
@@ -132,7 +132,7 @@ function AIGap() {
             <ul className="aigap-list">
               {SHALLOW.map((it) => (
                 <li key={it.l}>
-                  <span className="aigap-marker aigap-marker--shallow">—</span>
+                  <span className="aigap-marker aigap-marker--shallow">-</span>
                   <div>
                     <span className="aigap-it-l">{it.l}</span>
                     <span className="aigap-it-d">{it.d}</span>

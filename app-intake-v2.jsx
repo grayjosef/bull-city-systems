@@ -1,5 +1,5 @@
 /* =====================================================================
- * INTAKE — multi-service form with conditional sub-forms
+ * INTAKE: multi-service form with conditional sub-forms
  * ---------------------------------------------------------------------
  * Replaces the prior single-step intake. Flow:
  *   1. Customer fills core contact + business info
@@ -250,7 +250,7 @@ function Intake() {
             </Field>
           </div>
 
-          {/* Honeypot — hidden from real users */}
+          {/* Honeypot: hidden from real users */}
           <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", height: 0, overflow: "hidden" }}>
             <label>Don't fill this in: <input type="text" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} /></label>
           </div>
@@ -298,7 +298,7 @@ function IntakeSuccess({ name, services, preferredNextStep }) {
                href={bookingUrl}
                target="_blank"
                rel="noopener noreferrer">
-              Skip the wait — book your discovery call now <span className="arrow">→</span>
+              Skip the wait, book your discovery call now <span className="arrow">→</span>
             </a>
           )}
 

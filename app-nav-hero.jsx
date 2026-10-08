@@ -1,7 +1,7 @@
 /* global React */
 const { useState, useEffect, useRef } = React;
 
-/* ---------- Booking URL — single source of truth ---------- */
+/* ---------- Booking URL: single source of truth ---------- */
 const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2oW6zGqgKv8Rc7MhWwjGwq_zvMrIMGln-B2QrGf9AmiCaY1z1fYYJSec81tN5cVAFp2T1lv6i9";
 
 /* Expose to other JSX modules loaded after this one */
@@ -100,7 +100,7 @@ function Nav() {
   );
 }
 
-/* Mark / monogram — simple BCS in a notched square */
+/* Mark / monogram: simple BCS in a notched square */
 function BCSMark({ size = 36 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" className="bcs-mark" aria-hidden="true">
@@ -142,7 +142,7 @@ function Hero() {
 
         <p className="lede hero-lede">
           Bull City Systems helps Durham and Triangle businesses clean up,
-          modernize, and strengthen their tech — from websites and customer intake
+          modernize, and strengthen their tech, from websites and customer intake
           to Microsoft 365, automation, cloud, and day-to-day IT support.
         </p>
 
@@ -150,7 +150,7 @@ function Hero() {
           "When you hire Bull City Systems, you're my only customer. I walk you
           through it hand in hand, from first call to final delivery, and I don't
           stop until it's done the way you want it."
-          <cite>— Josef Gray, founder</cite>
+          <cite>Josef Gray, founder</cite>
         </blockquote>
 
         <div className="hero-ctas">

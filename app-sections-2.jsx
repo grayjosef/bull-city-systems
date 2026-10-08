@@ -20,7 +20,7 @@ const TIERS = [
     name: "Business Website",
     price: "$1,199",
     sub: "starting",
-    desc: "A multi-page site for an established small business — services, about, contact, the whole picture.",
+    desc: "A multi-page site for an established small business: services, about, contact, the whole picture.",
     items: [
       "Up to 6 designed pages",
       "Copy support & basic SEO",
@@ -35,7 +35,7 @@ const TIERS = [
     name: "Growth System",
     price: "$4,999",
     sub: "starting",
-    desc: "Website plus the connected pieces — automation, intake routing, and the workflows behind the scenes.",
+    desc: "Website plus the connected pieces: automation, intake routing, and the workflows behind the scenes.",
     items: [
       "Everything in Business",
       "Workflow automation build",
@@ -61,7 +61,7 @@ const TIERS = [
     name: "Enterprise & Training",
     price: "SOW",
     sub: "or day-rate",
-    desc: "For teams that need a senior hand for a defined engagement. Fixed-fee workshops, team trainings, or scoped advisory — quoted clearly, delivered personally.",
+    desc: "For teams that need a senior hand for a defined engagement. Fixed-fee workshops, team trainings, or scoped advisory, quoted clearly, delivered personally.",
     items: [
       "Fixed-fee SOW projects",
       "Half-day & full-day workshops",
@@ -127,7 +127,7 @@ function Pricing() {
         </div>
 
         <p className="pricing-note">
-          <span className="numeral">Note —</span> Every quote is scoped clearly before work begins.
+          <span className="numeral">Note:</span> Every quote is scoped clearly before work begins.
           No mystery pricing. No bait and switch.
         </p>
       </div>
@@ -139,7 +139,7 @@ function Pricing() {
 const STEPS = [
   { n: "01", t: "Review the problem", d: "A short call to hear what's broken, what you've tried, and what you actually need to be true in 30 days." },
   { n: "02", t: "Define the scope", d: "A written scope with deliverables, timeline, and a fixed or capped price. You sign before anything starts." },
-  { n: "03", t: "Build and refine", d: "The work happens. You see it as it goes — not surprises at the end. Real check-ins, real revisions." },
+  { n: "03", t: "Build and refine", d: "The work happens. You see it as it goes, not surprises at the end. Real check-ins, real revisions." },
   { n: "04", t: "Launch and handoff", d: "Ship it, document it, train your team, and hand back the keys. Optional ongoing support if you want it." },
 ];
 
@@ -184,7 +184,7 @@ function Durham() {
     <section id="durham" className="durham">
       <div className="durham-bg" aria-hidden="true">
         <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice" className="durham-skyline">
-          {/* abstract horizon — water tower silhouette + warehouse roofs, no real landmarks */}
+          {/* abstract horizon: water tower silhouette + warehouse roofs, no real landmarks */}
           <g fill="none" stroke="#2A2F38" strokeWidth="1">
             <path d="M0 480 L120 480 L120 420 L200 420 L200 460 L320 460 L320 380 L360 380 L360 460 L480 460 L500 440 L520 460 L640 460 L640 400 L680 400 L680 360 L720 360 L720 460 L860 460 L860 440 L920 440 L920 470 L1040 470 L1040 410 L1080 410 L1080 380 L1100 380 L1100 410 L1140 410 L1140 470 L1280 470 L1280 450 L1400 450 L1400 600 L0 600 Z" fill="#0E1014" />
             <circle cx="700" cy="330" r="22" />
@@ -212,7 +212,7 @@ function Durham() {
         </p>
         <p className="lede durham-lede">
           Bull City Systems is built in that same spirit. Not chasing trends, not selling
-          dashboards no one opens — just clean technical work for the cafés, contractors,
+          dashboards no one opens, just clean technical work for the cafés, contractors,
           clinics, studios, and small operators that make the Triangle actually run.
         </p>
 
