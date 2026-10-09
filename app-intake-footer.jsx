@@ -42,11 +42,12 @@ function Footer() {
           </div>
 
           <div className="footer-col">
-            <span className="eyebrow-mute">Community</span>
+            <span className="eyebrow-mute">Network</span>
             <ul>
               <li><a href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network ↗</a></li>
               <li><a href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger ↗</a></li>
-              <li><span className="t-mute">Civic tech by the founder</span></li>
+              <li><a href="https://thefittingroom-gh.com" target="_blank" rel="noopener noreferrer">The Fitting Room ↗</a></li>
+              <li><span className="t-mute">Built by Bull City Systems</span></li>
               <li><span className="t-mute">Bull City · NC</span></li>
               <li><span className="t-mute">35.99° N · 78.90° W</span></li>
             </ul>
