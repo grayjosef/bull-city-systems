@@ -1,12 +1,12 @@
 # Bull City Systems
 
-Marketing site for **Bull City Systems** — a veteran-owned technical studio serving Durham and the Triangle. A studio of Arc & Anchor.
+Marketing site for **Bull City Systems**, a veteran-owned technical studio serving Durham and the Triangle. A studio of Arc & Anchor.
 
 🌐 **Live:** [bullcitysystems.com](https://bullcitysystems.com)
 
 ## What this is
 
-A static, single-page React landing page. The JSX is currently compiled in the browser via `@babel/standalone` — fast to ship, slow on first paint. See **Future improvements** below for the precompile path.
+A static, single-page React landing page. The JSX is currently compiled in the browser via `@babel/standalone`, fast to ship, slow on first paint. See **Future improvements** below for the precompile path.
 
 ## Stack
 
@@ -39,7 +39,7 @@ Then open `http://localhost:8000`.
 | ----------------------------- | --------------------------------------------------------- |
 | `index.html`                  | Entry point. Loads React, Babel, fonts, then composes app |
 | `styles.css`                  | Design tokens (colors, type, spacing) + base styles       |
-| `sections.css`                | Section-level styles — hero, services, pricing, etc.      |
+| `sections.css`                | Section-level styles, hero, services, pricing, etc.      |
 | `sections-v2.css`             | Refinements / overrides for sections                      |
 | `welcome.css`                 | Welcome intro animation styles                            |
 | `app-welcome.jsx`             | Opening "WelcomeIntro" animation                          |
@@ -60,12 +60,12 @@ After initial setup, deploys are automatic on every push to `main`.
 
 ## Form submission
 
-The intake form currently shows a success state but **does not actually send anywhere yet**. The submission handler is in `app-intake-footer.jsx` — search for the `onSubmit` handler.
+The intake form currently shows a success state but **does not actually send anywhere yet**. The submission handler is in `app-intake-footer.jsx`, search for the `onSubmit` handler.
 
 To wire it up, you have two clean options:
 
 1. **Cloudflare Pages Function** (`functions/intake.js`) that forwards to email or a Google Sheet via webhook.
-2. **External form service** (Formspree, Basin, Web3Forms) — change the form's `action` URL and you're done.
+2. **External form service** (Formspree, Basin, Web3Forms), change the form's `action` URL and you're done.
 
 Either route should send notifications to **info@bullcitysystems.com**.
 

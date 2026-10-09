@@ -1,5 +1,5 @@
 /* =====================================================================
- * BULL CITY SIGNATURE — Durham flag badge + "Powered by" tagline
+ * BULL CITY SIGNATURE, Durham flag badge + "Powered by" tagline
  * ---------------------------------------------------------------------
  * Drop this into any site you build. It gives you the standard Bull City
  * footer signature: clickable Durham flag (with explainer modal) above
@@ -28,7 +28,7 @@ function BCSignature() {
         <button
           className="bcs-sig-flag"
           onClick={() => setOpen(true)}
-          aria-label="Durham, NC flag — click for meaning"
+          aria-label="Durham, NC flag, click for meaning"
           title="Durham, NC">
           <DurhamFlag />
         </button>
@@ -47,10 +47,10 @@ function BCSignature() {
             <span className="bcs-flag-eyebrow">DURHAM, NC</span>
             <DurhamFlag large />
             <ul className="bcs-flag-meaning">
-              <li><span className="bcs-fm-sw" style={{ background: "#1F4A8A" }} />Royal blue — courage</li>
-              <li><span className="bcs-fm-sw" style={{ background: "#B83A28" }} />Red — action &amp; progress</li>
-              <li><span className="bcs-fm-sw" style={{ background: "#C8932E" }} />Gold — quality in growth</li>
-              <li><span className="bcs-fm-sw" style={{ background: "#ECE5D6" }} />White — high ideals</li>
+              <li><span className="bcs-fm-sw" style={{ background: "#1F4A8A" }} />Royal blue, courage</li>
+              <li><span className="bcs-fm-sw" style={{ background: "#B83A28" }} />Red, action &amp; progress</li>
+              <li><span className="bcs-fm-sw" style={{ background: "#C8932E" }} />Gold, quality in growth</li>
+              <li><span className="bcs-fm-sw" style={{ background: "#ECE5D6" }} />White, high ideals</li>
             </ul>
             <p className="bcs-flag-foot">Seven stars · The Pleiades · The New Spirit of Durham</p>
             <button className="bcs-flag-close" onClick={() => setOpen(false)}>Close</button>

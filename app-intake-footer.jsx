@@ -58,7 +58,7 @@ function Footer() {
           <span className="t-mute">Built in Durham. Built to last.</span>
         </div>
 
-        {/* Universal Bull City signature — Durham flag + powered-by tagline */}
+        {/* Universal Bull City signature, Durham flag + powered-by tagline */}
         <BCSignature />
       </div>
     </footer>

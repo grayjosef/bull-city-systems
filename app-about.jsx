@@ -9,10 +9,10 @@ function About() {
       <div className="container about-grid reveal" ref={ref}>
         <div className="about-portrait">
           <div className="portrait-frame portrait-photo">
-            <img src="owner-headshot.jpg" alt="Founder, Bull City Systems — Durham, NC" className="portrait-img" />
+            <img src="owner-headshot.jpg" alt="Founder, Bull City Systems, Durham, NC" className="portrait-img" />
             <div className="portrait-stamp">
               <span className="portrait-stamp-dot" />
-              <span>VERIFIED · DURHAM, NC</span>
+              <span>DURHAM, NC</span>
             </div>
             <div className="portrait-tag">
               <span className="numeral">FOUNDER</span>
@@ -31,22 +31,23 @@ function About() {
             <span className="t-mute">Technical second. Both, always.</span>
           </h2>
           <p className="lede about-lede">
-            Bull City Systems is run by Josef Gray — Joey — a Durham-based veteran and community organizer.
-            Outside of client work, his focus is on the people and institutions that make
-            this place actually work — local activism, civic infrastructure, and the slow,
+            I'm Josef Gray, Joey, a Durham-based veteran and community organizer.
+            Outside of client work, my focus is on the people and institutions that make
+            this place actually work: local activism, civic infrastructure, and the slow,
             unglamorous work of building accountable local power.
           </p>
           <p className="body about-copy">
-            He's the founder of <a className="ext-link" href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network</a>{" "}
+            I founded <a className="ext-link" href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network</a>{" "}
             <span className="ext-arrow">↗</span> and <a className="ext-link" href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger</a>{" "}
             <span className="ext-arrow">↗</span>, civic tools for government accountability and legislative
-            research. The same operating principles drive Bull City Systems:
+            research. The same operating principles drive my work here:
             transparency in pricing, accountability in delivery, and a refusal to dress up
             simple work as something it isn't.
           </p>
 
           <ul className="about-pills">
             <li className="vet-pill"><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span><span className="t-vet">Veteran-owned</span></li>
+            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Black-owned</li>
             <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Durham resident</li>
             <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Community organizer</li>
             <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Civic tech founder</li>

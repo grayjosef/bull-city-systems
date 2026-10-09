@@ -6,10 +6,10 @@
  * in full to quoted work; refundable if no work is commissioned.
  *
  * Required environment variable (Cloudflare Pages dashboard):
- *   STRIPE_SECRET_KEY — Stripe secret key (paste in Cloudflare, never in code)
+ *   STRIPE_SECRET_KEY, Stripe secret key (paste in Cloudflare, never in code)
  *
  * POST body: { name, email, notes? }
- * Returns: { url } — redirect the browser to the Stripe Checkout URL.
+ * Returns: { url }, redirect the browser to the Stripe Checkout URL.
  */
 export async function onRequestPost({ request, env }) {
   const cors = {
@@ -39,7 +39,7 @@ export async function onRequestPost({ request, env }) {
     "mode": "payment",
     "customer_email": email,
     "line_items[0][price_data][currency]": "usd",
-    "line_items[0][price_data][product_data][name]": "Bull City Systems — Working Session Deposit",
+    "line_items[0][price_data][product_data][name]": "Bull City Systems, Working Session Deposit",
     "line_items[0][price_data][product_data][description]": "Refundable $99 deposit, applied in full to quoted work.",
     "line_items[0][price_data][unit_amount]": "9900",
     "line_items[0][quantity]": "1",

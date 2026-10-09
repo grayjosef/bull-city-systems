@@ -7,17 +7,17 @@
  *     (one row per submission; customer email is the key for grouping)
  *
  * Required environment variables (set in Cloudflare Pages dashboard):
- *   RESEND_API_KEY              — from resend.com (free tier OK)
- *   NOTIFY_TO_EMAIL             — quotes@bullcitysystems.com
- *   NOTIFY_FROM_EMAIL           — e.g. "Bull City Systems <noreply@bullcitysystems.com>"
+ *   RESEND_API_KEY             , from resend.com (free tier OK)
+ *   NOTIFY_TO_EMAIL            , quotes@bullcitysystems.com
+ *   NOTIFY_FROM_EMAIL          , e.g. "Bull City Systems <noreply@bullcitysystems.com>"
  *                                 (must be a verified Resend sender for your domain)
- *   GOOGLE_SHEET_ID             — the long ID from the Sheet URL
- *   GOOGLE_SA_EMAIL             — service-account email
- *   GOOGLE_SA_PRIVATE_KEY       — service-account private key (paste full
+ *   GOOGLE_SHEET_ID            , the long ID from the Sheet URL
+ *   GOOGLE_SA_EMAIL            , service-account email
+ *   GOOGLE_SA_PRIVATE_KEY      , service-account private key (paste full
  *                                 multi-line PEM exactly; Cloudflare handles \n)
  *
  * The Sheet must be shared with GOOGLE_SA_EMAIL as Editor.
- * Tab name expected: "Leads" (created automatically if missing? no — create
+ * Tab name expected: "Leads" (created automatically if missing? no, create
  * it once with the headers from sheet-template.md)
  */
 
@@ -142,7 +142,7 @@ async function safe(fn) {
 /* ===================== Resend email ===================== */
 
 async function sendNotificationEmail(record, env) {
-  const subject = `New lead — ${record.name}${record.businessName ? " · " + record.businessName : ""}`;
+  const subject = `New lead, ${record.name}${record.businessName ? " · " + record.businessName : ""}`;
   const servicesLine = record.services.join(", ") || "(none specified)";
 
   const html = `
@@ -213,7 +213,7 @@ ${JSON.stringify(record.serviceDetails, null, 2)}
 function row(label, value) {
   return `<tr>
     <td style="padding:6px 12px 6px 0;color:#6B5B4F;font-size:13px;vertical-align:top;width:170px">${escapeHtml(label)}</td>
-    <td style="padding:6px 0;color:#0F1B2D;font-size:13px">${escapeHtml(value || "—")}</td>
+    <td style="padding:6px 0;color:#0F1B2D;font-size:13px">${escapeHtml(value || "-")}</td>
   </tr>`;
 }
 
@@ -232,28 +232,28 @@ async function appendToSheet(record, env) {
   const range = `${tab}!A:Z`;
 
   const values = [[
-    record.submittedAtPretty,                         // A — Submitted (ET)
-    record.email,                                     // B — Customer email (KEY)
-    record.name,                                      // C — Name
-    record.businessName,                              // D — Business
-    record.phone,                                     // E — Phone
-    record.location,                                  // F — Location
-    record.businessType,                              // G — Business type
-    record.currentWebsite,                            // H — Current site
-    record.services.join(", "),                       // I — Services (combined)
-    record.budget,                                    // J — Budget
-    record.timeline,                                  // K — Timeline
-    record.biggestProblem,                            // L — Biggest problem
-    record.preferredNextStep,                         // M — Preferred next step
-    JSON.stringify(record.serviceDetails),            // N — Service details JSON
-    "New",                                            // O — Status (default)
-    "",                                               // P — Quote sent?
-    "",                                               // Q — Quote amount
-    "",                                               // R — Discovery booked?
-    "",                                               // S — Follow-up date
-    "",                                               // T — Notes
-    record.sourceUrl,                                 // U — Source URL
-    record.submittedAt,                               // V — Submitted (ISO UTC)
+    record.submittedAtPretty,                         // A, Submitted (ET)
+    record.email,                                     // B, Customer email (KEY)
+    record.name,                                      // C, Name
+    record.businessName,                              // D, Business
+    record.phone,                                     // E, Phone
+    record.location,                                  // F, Location
+    record.businessType,                              // G, Business type
+    record.currentWebsite,                            // H, Current site
+    record.services.join(", "),                       // I, Services (combined)
+    record.budget,                                    // J, Budget
+    record.timeline,                                  // K, Timeline
+    record.biggestProblem,                            // L, Biggest problem
+    record.preferredNextStep,                         // M, Preferred next step
+    JSON.stringify(record.serviceDetails),            // N, Service details JSON
+    "New",                                            // O, Status (default)
+    "",                                               // P, Quote sent?
+    "",                                               // Q, Quote amount
+    "",                                               // R, Discovery booked?
+    "",                                               // S, Follow-up date
+    "",                                               // T, Notes
+    record.sourceUrl,                                 // U, Source URL
+    record.submittedAt,                               // V, Submitted (ISO UTC)
   ]];
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
