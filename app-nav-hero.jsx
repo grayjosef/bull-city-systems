@@ -133,17 +133,16 @@ function Hero() {
         </div>
 
         <h1 className="h-display hero-title">
-          Durham-built websites,
+          Your tech is costing you
           <br />
-          automation, and IT systems
-          <br />
-          <em className="hero-italic">with precision. under pressure.</em>
+          customers. <em className="hero-italic">Let's fix that.</em>
         </h1>
 
         <p className="lede hero-lede">
-          Bull City Systems helps Durham and Triangle businesses clean up,
-          modernize, and strengthen their tech, from websites and customer intake
-          to Microsoft 365, automation, cloud, and day-to-day IT support.
+          Missed calls. No online booking. A website that embarrasses you.
+          Bull City Systems builds Durham businesses the websites, automation,
+          and IT systems they should have had years ago, from customer intake
+          to Microsoft 365 to day-to-day support.
         </p>
 
         <blockquote className="hero-promise">
