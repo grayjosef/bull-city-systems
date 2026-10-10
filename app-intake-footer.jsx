@@ -36,7 +36,7 @@ function Footer() {
             <span className="eyebrow-mute">Contact</span>
             <ul>
               <li><a href="mailto:hello@bullcitysystems.com">hello@bullcitysystems.com</a></li>
-              <li><a href="tel:+19105849094">(910) 584-9094</a></li>
+              <li><a href="tel:+19192839006">(919) 283-9006</a></li>
               <li><span className="t-mute">Durham, North Carolina</span></li>
               <li><a href="/book/">Free discovery call →</a></li>
             </ul>
