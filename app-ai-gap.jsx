@@ -174,7 +174,7 @@ function AIGap() {
           </h3>
           <a className="aigap-cta-btn" href="/book/">
             <span className="aigap-cta-dot" />
-            Book a free discovery call <span className="arrow">→</span>
+            Book a call <span className="arrow">→</span>
           </a>
         </div>
       </div>

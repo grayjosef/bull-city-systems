@@ -75,7 +75,7 @@ function Nav() {
         </nav>
         <div className="nav-cta">
           <a className="btn btn-ghost" href="/book/">
-            Free discovery call
+            Book a call
             <span className="arrow">→</span>
           </a>
         </div>
@@ -92,7 +92,7 @@ function Nav() {
             </a>
           ))}
           <a className="btn btn-primary" href="/book/" onClick={() => setOpen(false)}>
-            Free discovery call <span className="arrow">→</span>
+            Book a call <span className="arrow">→</span>
           </a>
         </div>
       )}
@@ -154,11 +154,11 @@ function Hero() {
 
         <div className="hero-ctas">
           <a className="btn btn-primary" href="/book/">
-            Book a free discovery call <span className="arrow">→</span>
+            Book a call <span className="arrow">→</span>
           </a>
-          <button className="btn btn-ghost" onClick={() => scrollToId("services")}>
-            Browse services
-          </button>
+          <a className="btn btn-ghost" href="tel:+19192839006">
+            Call (919) 283-9006
+          </a>
         </div>
 
         <p className="hero-capacity">
