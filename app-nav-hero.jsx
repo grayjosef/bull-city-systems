@@ -140,8 +140,8 @@ function Hero() {
 
         <p className="lede hero-lede">
           Missed calls. No online booking. A website that embarrasses you.
-          Bull City Systems builds Durham businesses the websites, automation,
-          and IT systems they should have had years ago, from customer intake
+          Bull City Systems builds the websites, automation,
+          and IT systems Durham businesses should have had years ago, from customer intake
           to Microsoft 365 to day-to-day support.
         </p>
 

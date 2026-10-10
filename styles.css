@@ -1,5 +1,5 @@
 /* ========================================================
-   Bull City Systems — design tokens + base
+   Bull City Systems -- design tokens + base
    Industrial elegant: charcoal, navy, warm off-white,
    Durham blue, oxidized brass, tobacco brick.
    ======================================================== */
@@ -20,13 +20,13 @@
   --c-mute:       #8A8676;     /* warm muted */
   --c-mute-2:     #6A6759;
 
-  /* Accents — Durham flag palette
+  /* Accents -- Durham flag palette
      LEAD: gold. SECONDARY: brick red, used as tactical/precision accent. */
-  --c-blue:       #2E5DA8;     /* royal — courage */
+  --c-blue:       #2E5DA8;     /* royal -- courage */
   --c-blue-deep:  #1F4A8A;
   --c-blue-soft:  #4A7AC4;
-  /* `brass` is the project's primary accent variable — gold. */
-  --c-brass:      #C8932E;     /* gold — lead accent */
+  /* `brass` is the project's primary accent variable -- gold. */
+  --c-brass:      #C8932E;     /* gold -- lead accent */
   --c-brass-dim:  #8A6420;
   --c-gold:       #C8932E;     /* alias */
   --c-gold-dim:   #8A6420;
@@ -39,7 +39,7 @@
   --c-red-dim:    #7E2618;
   --c-verdigris:  #5A7E72;
 
-  /* "this is a go" green — used VERY sparingly: trust signals, available
+  /* "this is a go" green -- used VERY sparingly: trust signals, available
      status, completed-step ticks, "we ship" callouts. Never on body copy
      or large fills. Limit to 3 instances per page. */
   --c-go:         #4FA873;

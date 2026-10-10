@@ -1,5 +1,5 @@
 /* =========================================================
-   WELCOME INTRO v3 — Bull charges, slings flag, wordmark stamps
+   WELCOME INTRO v3 -- Bull charges, slings flag, wordmark stamps
    Cinematic. Punchy. No paint-bars.
    ========================================================= */
 
@@ -21,7 +21,7 @@
   pointer-events: none;
 }
 
-/* Camera shell — receives shake on impact */
+/* Camera shell -- receives shake on impact */
 .welcome-cam {
   position: relative;
   width: 100%;
@@ -190,7 +190,7 @@
   display: block;
   filter: drop-shadow(0 30px 50px rgba(0,0,0,0.7));
 }
-/* head-toss in phase 3 — small rotation on the whole bull */
+/* head-toss in phase 3 -- small rotation on the whole bull */
 .welcome-p3 .bull-svg {
   animation: headToss 600ms cubic-bezier(.4,0,.2,1) 100ms;
   transform-origin: 30% 60%;
@@ -241,7 +241,7 @@
   transition: width 380ms cubic-bezier(.4,0,.2,1);
 }
 .welcome-p3 .flag-pole {
-  /* pole extends left — bull is facing left so flag goes left */
+  /* pole extends left -- bull is facing left so flag goes left */
   width: clamp(180px, 24vw, 340px);
   transform: translateX(-100%);
 }
