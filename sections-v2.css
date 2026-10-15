@@ -555,3 +555,22 @@ body[data-accent="brick"] {
   --c-brass: #A23A28;
   --c-brass-dim: #6E2818;
 }
+
+/* ---------- AI JUMPSTART (04) ---------- */
+.aijs { padding: clamp(72px, 9vw, 116px) 0; border-top: 1px solid var(--c-line-soft); }
+.aijs-id { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--c-mute); }
+.aijs-lede { max-width: 62ch; }
+.aijs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.aijs-card { border: 1px solid var(--c-line-soft); background: var(--c-charcoal-2); border-radius: var(--rad-3); padding: 22px 20px; }
+.aijs-marker { font-family: var(--f-mono); color: var(--c-brass); font-size: 15px; }
+.aijs-card-title { font-family: var(--f-display); font-size: 20px; font-weight: 600; color: var(--c-bone); margin: 10px 0 8px; }
+.aijs-card-body { font-size: 14.5px; line-height: 1.55; color: var(--c-bone-dim); margin: 0; }
+.aijs-who { margin-top: 28px; font-size: 15px; color: var(--c-mute); max-width: 68ch; }
+.aijs-promise { margin-top: 36px; border-left: 3px solid var(--c-brass); background: var(--c-charcoal-2); padding: 20px 24px; }
+.aijs-promise-tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--c-brass); }
+.aijs-promise-text { margin: 8px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--c-bone); max-width: 72ch; }
+.aijs-cta { margin-top: 32px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.aijs-phone { font-family: var(--f-mono); font-size: 15px; color: var(--c-bone-dim); text-decoration: none; }
+.aijs-phone:hover { color: var(--c-bone); }
+@media (max-width: 980px) { .aijs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .aijs-grid { grid-template-columns: 1fr; } .aijs-id { display: none; } }

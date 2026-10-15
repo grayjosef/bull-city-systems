@@ -23,7 +23,7 @@ function About() {
 
         <div className="about-body">
           <div className="section-head">
-            <span className="numeral">09 / About the owner</span>
+            <span className="numeral">10 / About the owner</span>
             {/* numeral kept; section reads cleaner with About staying just before intake */}
           </div>
           <h2 className="h-section about-title">

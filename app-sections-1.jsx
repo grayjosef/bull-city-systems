@@ -144,7 +144,7 @@ function Services() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">04 / Services</span>
+            <span className="numeral">05 / Services</span>
           </div>
           <div className="services-head">
             <h2 className="h-section">
@@ -233,7 +233,7 @@ function Why() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">05 / Why Bull City Systems</span>
+            <span className="numeral">06 / Why Bull City Systems</span>
           </div>
           <h2 className="h-section why-title">
             I build systems the way<br />

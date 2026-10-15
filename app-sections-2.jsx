@@ -79,7 +79,7 @@ function Pricing() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">06 / Pricing</span>
+            <span className="numeral">07 / Pricing</span>
           </div>
           <div className="pricing-head">
             <h2 className="h-section">
@@ -150,7 +150,7 @@ function Process() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">07 / Process</span>
+            <span className="numeral">08 / Process</span>
           </div>
           <h2 className="h-section">
             Four steps.<br />
@@ -199,7 +199,7 @@ function Durham() {
 
       <div className="container durham-inner reveal" ref={ref}>
         <div className="durham-meta">
-          <span className="eyebrow">08 / Durham, NC</span>
+          <span className="eyebrow">09 / Durham, NC</span>
         </div>
         <h2 className="h-section durham-title">
           Built in Bull City.<br />
