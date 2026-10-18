@@ -85,6 +85,14 @@ function AIJumpstart() {
           </p>
         </div>
 
+        <div className="aijs-price">
+          <span className="aijs-price-amount">$999</span>
+          <span className="aijs-price-note">
+            The complete package, one flat price. No hourly meter, no upsell
+            ladder. The $99 booking deposit applies in full.
+          </span>
+        </div>
+
         <div className="aijs-cta">
           <a className="aigap-cta-btn" href="/book/">
             <span className="aigap-cta-dot" />
