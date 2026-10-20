@@ -577,3 +577,8 @@ body[data-accent="brick"] {
 .aijs-phone:hover { color: var(--c-bone); }
 @media (max-width: 980px) { .aijs-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .aijs-grid { grid-template-columns: 1fr; } .aijs-id { display: none; } }
+
+/* Adopted brand system (Oct 20, 2026): B3 ceremonial bull band in About */
+.about-bull-band { max-width: 620px; margin: 4px auto 0; padding: 26px 24px 36px; text-align: center; }
+.about-bull-img { width: 100%; height: auto; display: block; }
+.about-bull-cap { margin-top: 14px; color: var(--c-mute); font-size: 13px; letter-spacing: 0.04em; }

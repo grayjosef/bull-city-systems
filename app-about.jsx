@@ -63,6 +63,10 @@ function About() {
           </div>
         </div>
       </div>
+        <figure className="about-bull-band">
+          <img src="brand/bull-b3-cream.png" alt="The Bull City Systems bull, a full broadside bull formed from the letters B and S" className="about-bull-img" />
+          <figcaption className="about-bull-cap">The whole bull. Durham has drawn it broadside for a hundred years; so do we.</figcaption>
+        </figure>
     </section>
   );
 }

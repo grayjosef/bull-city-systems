@@ -103,19 +103,7 @@ function Nav() {
 /* Mark / monogram: simple BCS in a notched square */
 function BCSMark({ size = 36 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" className="bcs-mark" aria-hidden="true">
-      <defs>
-        <linearGradient id="bcs-g" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="#1B2029" />
-          <stop offset="100%" stopColor="#0B0D11" />
-        </linearGradient>
-      </defs>
-      <path d="M2 2 H32 L38 8 V38 H8 L2 32 Z" fill="url(#bcs-g)" stroke="#2A2F38" strokeWidth="1" />
-      <text x="20" y="26" textAnchor="middle" fontFamily="IBM Plex Mono, monospace"
-            fontSize="13" fontWeight="700" letterSpacing="0.5">
-        <tspan fill="#B83A28">B</tspan><tspan fill="#C8932E">C</tspan><tspan fill="#4A7AC4">S</tspan>
-      </text>
-    </svg>
+    <img src="brand/logo-mark-cream.png" width={size} height={size} className="bcs-mark" alt="" aria-hidden="true" />
   );
 }
 
