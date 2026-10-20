@@ -103,7 +103,7 @@ function Nav() {
 /* Mark / monogram: simple BCS in a notched square */
 function BCSMark({ size = 36 }) {
   return (
-    <img src="brand/logo-mark-cream.png" width={size} height={size} className="bcs-mark" alt="" aria-hidden="true" />
+    <img src="brand/bull-b3-cream.png" width={Math.round(size * 1.954)} height={size} className="bcs-mark" alt="" aria-hidden="true" />
   );
 }
 

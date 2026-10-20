@@ -17,7 +17,7 @@ function Footer() {
             <BCSMark size={44} />
             <div>
               <div className="footer-name">Bull City Systems</div>
-              <div className="footer-sub"><span className="t-vet">Veteran-owned</span> technical studio<br />serving Durham and the Triangle</div>
+              <div className="footer-sub">Technical design studio<br />serving Durham and the Triangle</div>
             </div>
           </div>
 
