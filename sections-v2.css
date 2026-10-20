@@ -582,3 +582,8 @@ body[data-accent="brick"] {
 .about-bull-band { max-width: 620px; margin: 4px auto 0; padding: 26px 24px 36px; text-align: center; }
 .about-bull-img { width: 100%; height: auto; display: block; }
 .about-bull-cap { margin-top: 14px; color: var(--c-mute); font-size: 13px; letter-spacing: 0.04em; }
+.aijs-tap-hint { margin-top: 34px; font-size: 14px; letter-spacing: .04em; color: var(--c-brass); }
+.aijs-card { cursor: pointer; transition: border-color .15s ease; }
+.aijs-card:hover { border-color: var(--c-brass); }
+.aijs-more { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--c-line-soft); font-size: 14.5px; line-height: 1.6; color: var(--c-bone); }
+.aijs-toggle { display: inline-block; margin-top: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--c-brass); }
