@@ -21,7 +21,17 @@
   align-items: center;
   gap: 24px;
   padding: 14px 32px;
-  height: 64px;
+  height: 148px;
+  transition: height 220ms var(--ease-out);
+}
+.bcs-mark { transition: height 220ms var(--ease-out); }
+.nav-scrolled .nav-inner { height: 74px; }
+.nav-scrolled .bcs-mark { height: 46px; width: auto; }
+@media (max-width: 720px) {
+  .nav-inner { height: 96px; }
+  .brand .bcs-mark { height: 80px; width: auto; }
+  .nav-scrolled .nav-inner { height: 66px; }
+  .nav-scrolled .bcs-mark { height: 42px; }
 }
 .brand {
   display: flex;
@@ -97,7 +107,7 @@
 /* --------- HERO --------- */
 .hero {
   position: relative;
-  padding: 180px 0 120px;
+  padding: 158px 0 120px;
   overflow: hidden;
   min-height: 100vh;
   display: flex;

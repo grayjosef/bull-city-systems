@@ -61,7 +61,7 @@ function Nav() {
     <header className={"nav" + (scrolled ? " nav-scrolled" : "")}>
       <div className="container nav-inner">
         <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); scrollToId("top"); }}>
-          <BCSMark />
+          <BCSMark size={118} />
           <span className="brand-text">
             <span className="brand-name">Bull City Systems</span>
           </span>
