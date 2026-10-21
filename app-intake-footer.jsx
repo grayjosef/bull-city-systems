@@ -49,6 +49,7 @@ function Footer() {
               <li><a href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network ↗</a></li>
               <li><a href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger ↗</a></li>
               <li><a href="https://thefittingroom-gh.com" target="_blank" rel="noopener noreferrer">The Fitting Room ↗</a></li>
+              <li><a href="https://thewillowwellco.com" target="_blank" rel="noopener noreferrer">The Willow Well ↗</a></li>
               <li><span className="t-mute">Built by Bull City Systems</span></li>
               <li><span className="t-mute">Bull City · NC</span></li>
               <li><span className="t-mute">35.99° N · 78.90° W</span></li>
@@ -58,7 +59,7 @@ function Footer() {
 
         <div className="footer-etsy">
           <a href="https://www.etsy.com/shop/AppliedAttention" target="_blank" rel="noopener noreferrer" aria-label="Applied Attention on Etsy">
-            <img src="brand/etsy-shop-qr.png?v=b2041" alt="QR code for the Applied Attention shop on Etsy" className="footer-etsy-qr" width={104} height={104} />
+            <img src="brand/etsy-shop-qr.png?v=b2042" alt="QR code for the Applied Attention shop on Etsy" className="footer-etsy-qr" width={104} height={104} />
           </a>
           <div className="footer-etsy-copy">
             <p>Wearing the gear? Scan to find it.</p>

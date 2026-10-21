@@ -21,7 +21,7 @@ function Apparel() {
 
         <div className="apparel-grid">
           <figure className="apparel-bull">
-            <img src="brand/bull-b3-cream.png?v=b2041" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
+            <img src="brand/bull-b3-cream.png?v=b2042" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
             <figcaption className="apparel-bull-cap">The whole bull. He is the mark on every piece.</figcaption>
           </figure>
 

@@ -54,6 +54,7 @@ function Nav() {
     { id: "why", label: "Why us" },
     { id: "pricing", label: "Pricing" },
     { id: "process", label: "Process" },
+    { id: "apparel", label: "Apparel" },
     { id: "intake", label: "Contact" },
   ];
 
