@@ -45,6 +45,7 @@ function Footer() {
           <div className="footer-col">
             <span className="eyebrow-mute">Network</span>
             <ul>
+              <li><a href="https://www.linkedin.com/company/bull-city-systems" target="_blank" rel="noopener noreferrer">Bull City Systems on LinkedIn ↗</a></li>
               <li><a href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network ↗</a></li>
               <li><a href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger ↗</a></li>
               <li><a href="https://thefittingroom-gh.com" target="_blank" rel="noopener noreferrer">The Fitting Room ↗</a></li>
