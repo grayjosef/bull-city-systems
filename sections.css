@@ -963,6 +963,31 @@
 .footer-col a:hover { color: var(--c-bone); }
 .footer-coords li { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; }
 
+.footer-etsy {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+.footer-etsy-qr {
+  display: block;
+  width: 104px;
+  height: 104px;
+  border-radius: 6px;
+}
+.footer-etsy-copy p {
+  font-size: 14px;
+  color: var(--c-bone-dim);
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+.footer-etsy-copy a {
+  font-size: 14px;
+  color: var(--c-brass);
+  transition: color 160ms var(--ease-out);
+}
+.footer-etsy-copy a:hover { color: var(--c-bone); }
+
 .footer-base {
   display: flex;
   justify-content: space-between;
