@@ -598,6 +598,18 @@ body[data-accent="brick"] {
 .apparel-status { margin: 22px 0 0; font-size: 15px; line-height: 1.55; color: var(--c-mute); }
 .apparel-cta { margin-top: 24px; }
 @media (max-width: 860px) { .apparel-grid { grid-template-columns: 1fr; } }
+.shelf { margin-top: clamp(56px, 7vw, 84px); border-top: 1px solid var(--c-line-soft); padding-top: clamp(36px, 5vw, 52px); }
+.shelf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 360px)); gap: 28px; margin-top: 28px; }
+.shelf-card { border: 1px solid var(--c-line-soft); background: var(--c-charcoal-2); border-radius: var(--rad-3); overflow: hidden; display: flex; flex-direction: column; }
+.shelf-card-media { position: relative; display: block; }
+.shelf-card-img { width: 100%; height: auto; display: block; }
+.shelf-badge { position: absolute; top: 12px; left: 12px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-brass); background: var(--c-ink); border: 1px solid var(--c-line-soft); border-radius: 999px; padding: 5px 10px; }
+.shelf-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+.shelf-card-title { font-family: var(--f-display); font-size: 19px; font-weight: 600; line-height: 1.25; color: var(--c-bone); margin: 0; }
+.shelf-card-price { font-family: var(--f-mono); font-size: 14px; letter-spacing: 0.03em; color: var(--c-brass); margin: 10px 0 0; }
+.shelf-card-detail { font-size: 14px; line-height: 1.55; color: var(--c-bone-dim); margin: 8px 0 0; flex: 1; }
+.shelf-card-btn { margin-top: 18px; align-self: flex-start; }
+.shelf-note { margin: 26px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--c-mute); }
 .aijs-tap-hint { margin-top: 34px; font-size: 14px; letter-spacing: .04em; color: var(--c-brass); }
 .aijs-card { cursor: pointer; transition: border-color .15s ease; }
 .aijs-card:hover { border-color: var(--c-brass); }

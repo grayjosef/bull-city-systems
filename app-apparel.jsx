@@ -1,6 +1,37 @@
 /* global React */
 
-/* ---------- Apparel: first drop preview ---------- */
+/* ---------- Apparel: first drop preview + live shop shelf ---------- */
+function ShopShelf() {
+  const listings = window.SHOP_LISTINGS || [];
+  if (!listings.length) return null;
+  return (
+    <div className="shelf">
+      <div className="section-head">
+        <span className="apparel-drop-tag">In the shop now</span>
+      </div>
+      <div className="shelf-grid">
+        {listings.map((l) => (
+          <article className="shelf-card" key={l.id}>
+            <a className="shelf-card-media" href={l.url} target="_blank" rel="noopener noreferrer">
+              <img src={l.image} alt={l.title} className="shelf-card-img" loading="lazy" />
+              <span className="shelf-badge">{l.badge}</span>
+            </a>
+            <div className="shelf-card-body">
+              <h3 className="shelf-card-title">{l.title}</h3>
+              <p className="shelf-card-price">{l.price}</p>
+              <p className="shelf-card-detail">{l.detail}</p>
+              <a className="btn btn-brass shelf-card-btn" href={l.url} target="_blank" rel="noopener noreferrer">
+                Get it on Etsy <span className="arrow">↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p className="shelf-note">Live from the Applied Attention shop on Etsy. Checkout runs through Etsy.</p>
+    </div>
+  );
+}
+
 function Apparel() {
   const ref = useReveal();
   return (
@@ -21,7 +52,7 @@ function Apparel() {
 
         <div className="apparel-grid">
           <figure className="apparel-bull">
-            <img src="brand/bull-b3-cream.png?v=b2042" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
+            <img src="brand/bull-b3-cream.png?v=b2043" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
             <figcaption className="apparel-bull-cap">The whole bull. He is the mark on every piece.</figcaption>
           </figure>
 
@@ -47,9 +78,11 @@ function Apparel() {
             </a>
           </div>
         </div>
+
+        <ShopShelf />
       </div>
     </section>
   );
 }
 
-Object.assign(window, { Apparel });
+Object.assign(window, { Apparel, ShopShelf });
