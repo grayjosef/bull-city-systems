@@ -582,6 +582,22 @@ body[data-accent="brick"] {
 .about-bull-band { max-width: 620px; margin: 4px auto 0; padding: 26px 24px 36px; text-align: center; }
 .about-bull-img { width: 100%; height: auto; display: block; }
 .about-bull-cap { margin-top: 14px; color: var(--c-mute); font-size: 13px; letter-spacing: 0.04em; }
+
+/* Apparel: first drop preview (Oct 21, 2026) */
+.apparel { background: var(--c-ink); border-top: 1px solid var(--c-line-soft); padding: clamp(72px, 9vw, 116px) 0; }
+.apparel-lede { max-width: 62ch; }
+.apparel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; margin-top: 48px; }
+.apparel-bull { margin: 0; border: 1px solid var(--c-line-soft); background: var(--c-charcoal-2); border-radius: var(--rad-3); padding: 28px 26px 22px; text-align: center; }
+.apparel-bull-img { width: 100%; height: auto; display: block; }
+.apparel-bull-cap { margin-top: 16px; color: var(--c-mute); font-size: 13px; letter-spacing: 0.04em; }
+.apparel-drop-tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--c-brass); text-transform: uppercase; }
+.apparel-item { border-top: 1px solid var(--c-line-soft); padding: 18px 0 16px; }
+.apparel-item:first-of-type { margin-top: 14px; }
+.apparel-item-name { font-family: var(--f-display); font-size: 20px; font-weight: 600; color: var(--c-bone); }
+.apparel-item p { font-size: 14.5px; line-height: 1.55; color: var(--c-bone-dim); margin: 6px 0 0; }
+.apparel-status { margin: 22px 0 0; font-size: 15px; line-height: 1.55; color: var(--c-mute); }
+.apparel-cta { margin-top: 24px; }
+@media (max-width: 860px) { .apparel-grid { grid-template-columns: 1fr; } }
 .aijs-tap-hint { margin-top: 34px; font-size: 14px; letter-spacing: .04em; color: var(--c-brass); }
 .aijs-card { cursor: pointer; transition: border-color .15s ease; }
 .aijs-card:hover { border-color: var(--c-brass); }
