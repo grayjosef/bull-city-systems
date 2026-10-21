@@ -610,6 +610,8 @@ body[data-accent="brick"] {
 .shelf-card-detail { font-size: 14px; line-height: 1.55; color: var(--c-bone-dim); margin: 8px 0 0; flex: 1; }
 .shelf-card-btn { margin-top: 18px; align-self: flex-start; }
 .shelf-note { margin: 26px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--c-mute); }
+.concepts { margin-top: clamp(56px, 7vw, 84px); border-top: 1px solid var(--c-line-soft); padding-top: clamp(36px, 5vw, 52px); }
+.concept-intro { margin: 14px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.55; color: var(--c-mute); }
 .aijs-tap-hint { margin-top: 34px; font-size: 14px; letter-spacing: .04em; color: var(--c-brass); }
 .aijs-card { cursor: pointer; transition: border-color .15s ease; }
 .aijs-card:hover { border-color: var(--c-brass); }
