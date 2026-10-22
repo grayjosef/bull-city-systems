@@ -32,36 +32,6 @@ function ShopShelf() {
   );
 }
 
-function ConceptGallery() {
-  const concepts = window.CONCEPT_LISTINGS || [];
-  if (!concepts.length) return null;
-  return (
-    <div className="concepts">
-      <div className="section-head">
-        <span className="apparel-drop-tag">Concepts in the works</span>
-      </div>
-      <p className="concept-intro">
-        Concepts in development, not yet for sale. When a piece is ready, it
-        lands in the Applied Attention shop on Etsy.
-      </p>
-      <div className="shelf-grid">
-        {concepts.map((c) => (
-          <article className="shelf-card" key={c.id}>
-            <div className="shelf-card-media">
-              <img src={c.image} alt={c.alt} className="shelf-card-img" loading="lazy" />
-              <span className="shelf-badge">Concept</span>
-            </div>
-            <div className="shelf-card-body">
-              <h3 className="shelf-card-title">{c.name}</h3>
-              <p className="shelf-card-detail">{c.line}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function Apparel() {
   const ref = useReveal();
   return (
@@ -89,10 +59,9 @@ function Apparel() {
         </div>
 
         <ShopShelf />
-        <ConceptGallery />
       </div>
     </section>
   );
 }
 
-Object.assign(window, { Apparel, ShopShelf, ConceptGallery });
+Object.assign(window, { Apparel, ShopShelf });
