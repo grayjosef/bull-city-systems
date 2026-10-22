@@ -1,7 +1,7 @@
 /* global React */
 const { useState: useStateA } = React;
 
-/* ---------- About the Owner ---------- */
+/* ---------- About: one short block ---------- */
 function About() {
   const ref = useReveal();
   return (
@@ -9,64 +9,41 @@ function About() {
       <div className="container about-grid reveal" ref={ref}>
         <div className="about-portrait">
           <div className="portrait-frame portrait-photo">
-            <img src="owner-headshot.jpg" alt="Founder, Bull City Systems, Durham, NC" className="portrait-img" />
+            <img src="owner-headshot.jpg" alt="Josef Gray, founder of Bull City Systems, Durham, NC" className="portrait-img" />
             <div className="portrait-stamp">
               <span className="portrait-stamp-dot" />
               <span>DURHAM, NC</span>
             </div>
             <div className="portrait-tag">
               <span className="numeral">FOUNDER</span>
-              <span className="portrait-name">Bull City Systems</span>
+              <span className="portrait-name">Josef Gray</span>
             </div>
           </div>
         </div>
 
         <div className="about-body">
           <div className="section-head">
-            <span className="numeral">10 / About the owner</span>
-            {/* numeral kept; section reads cleaner with About staying just before intake */}
+            <span className="numeral">03 / About</span>
           </div>
-          <h2 className="h-section about-title">
-            Local first.<br />
-            <span className="t-mute">Technical second. Both, always.</span>
-          </h2>
+          <h2 className="h-section about-title">About.</h2>
           <p className="lede about-lede">
-            I'm Josef Gray, Joey, a Durham-based veteran and community organizer.
-            Outside of client work, my focus is on the people and institutions that make
-            this place actually work: local activism, civic infrastructure, and the slow,
-            unglamorous work of building accountable local power.
+            I'm Josef Gray, founder of Bull City Systems, a Black-owned
+            technical design studio in Durham, North Carolina.
           </p>
           <p className="body about-copy">
-            I founded <a className="ext-link" href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">Political Integrity Network</a>{" "}
-            <span className="ext-arrow">↗</span> and <a className="ext-link" href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">The Quiet Ledger</a>{" "}
-            <span className="ext-arrow">↗</span>, civic tools for government accountability and legislative
-            research. The same operating principles drive my work here:
-            transparency in pricing, accountability in delivery, and a refusal to dress up
-            simple work as something it isn't.
+            The studio is one-man by design. The person you book is the person
+            who scopes the work, builds it, and hands back the keys: no account
+            managers, no handoffs, no offshore relay. When something needs
+            doing, you know exactly whose desk it is on.
           </p>
 
           <ul className="about-pills">
-            <li className="vet-pill"><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span><span className="t-vet">Veteran-owned</span></li>
             <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Black-owned</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Durham resident</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Community organizer</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Civic tech founder</li>
+            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Durham, NC</li>
+            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>One-man by design</li>
           </ul>
-
-          <div className="about-links">
-            <a className="btn btn-brass about-cta" href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">
-              Political Integrity Network <span className="arrow">↗</span>
-            </a>
-            <a className="btn btn-brass about-cta" href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">
-              The Quiet Ledger <span className="arrow">↗</span>
-            </a>
-          </div>
         </div>
       </div>
-        <figure className="about-bull-band">
-          <img src="brand/bull-b3-cream.png" alt="The Bull City Systems bull, a full broadside bull formed from the letters B and S" className="about-bull-img" />
-          <figcaption className="about-bull-cap">The whole bull. Durham has drawn it broadside for a hundred years; so do we.</figcaption>
-        </figure>
     </section>
   );
 }

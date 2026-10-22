@@ -100,8 +100,123 @@
 }
 .nav-mobile a { color: var(--c-bone); padding: 6px 0; font-size: 16px; }
 @media (max-width: 920px) {
-  .nav-links, .nav-cta { display: none; }
-  .nav-burger { display: flex; }
+  /* Slim bar keeps mark, menu, and Book visible at every width. */
+  .nav-cta { display: block; }
+}
+
+/* --------- SLIM BAR + CHARGING-BULL MENU (owner direction, Oct 22) --------- */
+.nav-inner { height: 88px; }
+.nav-scrolled .nav-inner { height: 64px; }
+@media (max-width: 720px) {
+  .nav-inner { height: 72px; }
+  .nav-scrolled .nav-inner { height: 60px; }
+}
+.bcs-monogram { height: 42px; width: auto; display: block; }
+@media (max-width: 720px) {
+  .bcs-monogram { height: 34px; }
+}
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-actions .nav-cta { margin-left: 0; }
+.menu-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-2);
+  padding: 7px 12px 7px 10px;
+  cursor: pointer;
+  color: var(--c-bone);
+  font-family: var(--f-sans);
+  font-size: 13px;
+  overflow: visible;
+}
+.menu-btn:hover { border-color: var(--c-brass); }
+.menu-btn:focus-visible { outline: 2px solid var(--c-brass); outline-offset: 2px; }
+.menu-bull {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+/* The charge: he runs in from the left, overshoots, skids, settles. */
+.menu-btn.charging .menu-bull {
+  animation: bull-charge 720ms cubic-bezier(.22, .9, .28, 1) both;
+}
+@keyframes bull-charge {
+  0%   { transform: translateX(-54px) rotate(0deg); opacity: 0; }
+  16%  { opacity: 1; }
+  60%  { transform: translateX(7px) rotate(-2.2deg); }
+  79%  { transform: translateX(-2px) rotate(0.8deg); }
+  100% { transform: translateX(0) rotate(0deg); opacity: 1; }
+}
+/* Skid dust at his feet as he stops. */
+.menu-btn.charging::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  bottom: 3px;
+  width: 30px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(236, 229, 214, 0.55), rgba(236, 229, 214, 0) 70%);
+  opacity: 0;
+  pointer-events: none;
+  animation: skid-dust 720ms ease-out both;
+}
+@keyframes skid-dust {
+  0%, 48% { opacity: 0; transform: scaleX(0.4) translateX(6px); }
+  66%     { opacity: 0.85; transform: scaleX(1.15) translateX(0); }
+  100%    { opacity: 0; transform: scaleX(1.6) translateX(-5px); }
+}
+/* The menu rolls out under the bar as he arrives. */
+.nav:has(.site-menu) {
+  background: rgba(11, 13, 17, 0.92);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--c-line-soft);
+}
+.site-menu {
+  background: var(--c-charcoal);
+  border-top: 1px solid var(--c-line-soft);
+  transform-origin: top;
+  animation: menu-roll 380ms var(--ease-out) both;
+}
+@keyframes menu-roll {
+  from { transform: scaleY(0.55) translateY(-10px); opacity: 0; }
+  to   { transform: scaleY(1) translateY(0); opacity: 1; }
+}
+.site-menu-links {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 24px 18px;
+}
+.site-menu-links a {
+  color: var(--c-bone);
+  font-size: 17px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--c-line-soft);
+  animation: menu-link-in 420ms var(--ease-out) both;
+}
+.site-menu-links a:last-child { border-bottom: none; }
+@keyframes menu-link-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-btn.charging .menu-bull,
+  .menu-btn.charging::after,
+  .site-menu,
+  .site-menu-links a {
+    animation: none !important;
+  }
 }
 
 /* --------- HERO --------- */
