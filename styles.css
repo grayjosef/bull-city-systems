@@ -47,8 +47,8 @@
   --c-go-glow:    rgba(79, 168, 115, 0.25);
 
   /* Type */
-  --f-display: "Bricolage Grotesque", "Times New Roman", serif;
-  --f-hero:    "Big Shoulders Display", "Bricolage Grotesque", serif;
+  --f-display: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-hero:    "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --f-sans:    "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
@@ -109,7 +109,7 @@ button { font-family: inherit; cursor: pointer; }
 .h-display {
   font-family: var(--f-display);
   font-weight: 500;
-  font-variation-settings: "wdth" 95, "opsz" 96;
+  
   letter-spacing: -0.02em;
   line-height: 0.98;
   color: var(--c-bone);
@@ -118,7 +118,7 @@ button { font-family: inherit; cursor: pointer; }
 .h-section {
   font-family: var(--f-display);
   font-weight: 500;
-  font-variation-settings: "wdth" 95, "opsz" 48;
+  
   letter-spacing: -0.02em;
   line-height: 1.02;
   color: var(--c-bone);
