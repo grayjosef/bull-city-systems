@@ -38,103 +38,66 @@ function scrollToId(id) {
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
-/* ---------- Nav: slim bar. Monogram left; the little bull runs the menu; one Book button. ---------- */
+/* ---------- Nav ---------- */
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [charging, setCharging] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
 
-  const menuLinks = [
-    { id: "services", label: "What we do" },
+  const links = [
+    { id: "services", label: "Services" },
+    { id: "why", label: "Why us" },
     { id: "pricing", label: "Pricing" },
-    { id: "about", label: "About" },
+    { id: "process", label: "Process" },
     { id: "apparel", label: "Apparel" },
     { id: "intake", label: "Contact" },
   ];
 
-  const toggleMenu = () => {
-    if (!open) setCharging(true);
-    else setCharging(false);
-    setOpen((v) => !v);
-  };
-
-  const goTo = (id) => {
-    setOpen(false);
-    setCharging(false);
-    scrollToId(id);
-  };
-
   return (
     <header className={"nav" + (scrolled ? " nav-scrolled" : "")}>
       <div className="container nav-inner">
-        <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); goTo("top"); }}>
-          <BCSMonogram height={42} />
+        <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); scrollToId("top"); }}>
+          <BCSMark size={118} />
           <span className="brand-text">
             <span className="brand-name">Bull City Systems</span>
           </span>
         </a>
-        <div className="nav-actions">
-          <button
-            type="button"
-            className={"menu-btn" + (charging ? " charging" : "")}
-            aria-expanded={open}
-            aria-controls="site-menu"
-            aria-haspopup="true"
-            onClick={toggleMenu}
-          >
-            <img
-              src="brand/bull-b3-cream.png"
-              alt=""
-              aria-hidden="true"
-              className="menu-bull"
-              onAnimationEnd={() => setCharging(false)}
-            />
-            <span className="menu-btn-label">Menu</span>
-          </button>
-          <div className="nav-cta">
-            <a className="btn btn-primary" href="/book/">
-              Book
-              <span className="arrow">→</span>
+        <nav className="nav-links">
+          {links.map((l) => (
+            <a key={l.id} href={"#" + l.id} onClick={(e) => { e.preventDefault(); scrollToId(l.id); }}>
+              {l.label}
             </a>
-          </div>
+          ))}
+        </nav>
+        <div className="nav-cta">
+          <a className="btn btn-ghost" href="/book/">
+            Book a call
+            <span className="arrow">→</span>
+          </a>
         </div>
+        <button className="nav-burger" aria-label="Menu" onClick={() => setOpen((v) => !v)}>
+          <span /><span /><span />
+        </button>
       </div>
       {open && (
-        <div className="site-menu" id="site-menu">
-          <nav className="site-menu-links" aria-label="Site">
-            {menuLinks.map((l, i) => (
-              <a
-                key={l.id}
-                href={"#" + l.id}
-                style={{ animationDelay: (120 + i * 55) + "ms" }}
-                onClick={(e) => { e.preventDefault(); goTo(l.id); }}
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
+        <div className="nav-mobile">
+          {links.map((l) => (
+            <a key={l.id} href={"#" + l.id}
+               onClick={(e) => { e.preventDefault(); setOpen(false); scrollToId(l.id); }}>
+              {l.label}
+            </a>
+          ))}
+          <a className="btn btn-primary" href="/book/" onClick={() => setOpen(false)}>
+            Book a call <span className="arrow">→</span>
+          </a>
         </div>
       )}
     </header>
-  );
-}
-
-/* A1 monogram: the small brand mark for the top bar and footer */
-function BCSMonogram({ height = 42 }) {
-  return (
-    <img src="brand/logo-mark-cream.png" height={height} className="bcs-monogram" alt="" aria-hidden="true" />
   );
 }
 
@@ -145,7 +108,7 @@ function BCSMark({ size = 36 }) {
   );
 }
 
-/* ---------- Hero: the bull, the name, one promise, one button ---------- */
+/* ---------- Hero ---------- */
 function Hero() {
   const ref = useReveal();
   return (
@@ -153,29 +116,58 @@ function Hero() {
       <HeroBackdrop />
       <div className="container hero-inner" ref={ref}>
         <div className="hero-meta">
-          <span className="eyebrow">Technical design studio · Durham, NC</span>
+          <span className="eyebrow">Bull City Systems · Durham, NC</span>
+          <span className="hero-meta-sep" />
+          <span className="eyebrow-mute">Est. 2025 · <span className="t-vet">Veteran-owned</span></span>
         </div>
 
-        <BCSMark size={170} />
+        <h1 className="h-display hero-title">
+          Your tech is costing you
+          <br />
+          customers. <em className="hero-italic">Let's fix that.</em>
+        </h1>
 
-        <h1 className="h-display hero-title">Bull City Systems</h1>
+        <p className="lede hero-lede">
+          Missed calls. No online booking. A website that embarrasses you.
+          Bull City Systems builds the websites, automation,
+          and IT systems Durham businesses should have had years ago, from customer intake
+          to Microsoft 365 to day-to-day support.
+        </p>
 
         <blockquote className="hero-promise">
           "When you hire Bull City Systems, you're my only customer. I walk you
-          through it hand in hand, flash to bang, and I don't stop until it's
-          done the way you want it."
+          through it hand in hand, from first call to final delivery, and I don't
+          stop until it's done the way you want it."
           <cite>Josef Gray, founder</cite>
         </blockquote>
 
         <div className="hero-ctas">
           <a className="btn btn-primary" href="/book/">
-            Book a consultation <span className="arrow">→</span>
+            Book a call <span className="arrow">→</span>
+          </a>
+          <a className="btn btn-ghost" href="tel:+19192839006">
+            Call (919) 283-9006
           </a>
         </div>
 
         <p className="hero-capacity">
-          $99 booking deposit, applied in full to your project.
+          I take on one automation build at a time. If the calendar's full,
+          I'll tell you when the next slot opens.
         </p>
+
+        <ul className="hero-trust">
+          <li><Tick /> <span className="t-vet">Veteran-owned</span></li>
+          <li><Tick /> Durham-based</li>
+          <li><Tick /> Built for small business</li>
+          <li><Tick /> Affordable flat-fee options</li>
+          <li><Tick /> Practical technical guidance</li>
+        </ul>
+      </div>
+
+      <div className="hero-coords">
+        <span>35.9940° N</span>
+        <span className="hero-coords-bar" />
+        <span>78.8986° W</span>
       </div>
     </section>
   );
@@ -190,14 +182,32 @@ function Tick() {
   );
 }
 
-/* Hero backdrop: blueprint grid + soft warm vignette */
+/* Hero backdrop: blueprint grid + soft warm vignette + a hairline diagram */
 function HeroBackdrop() {
   return (
     <div className="hero-bg" aria-hidden="true">
       <div className="hero-grid" />
       <div className="hero-vignette" />
+      <svg className="hero-diagram" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        {/* sparse hairline schematic suggesting interconnected systems */}
+        <g stroke="#2A2F38" strokeWidth="1" fill="none">
+          <circle cx="980" cy="180" r="3" fill="#C8932E" stroke="none" />
+          <circle cx="1080" cy="320" r="3" fill="#2E5DA8" stroke="none" />
+          <circle cx="900" cy="420" r="3" fill="#C8932E" stroke="none" />
+          <circle cx="1100" cy="540" r="3" fill="#A23A28" stroke="none" />
+          <circle cx="820" cy="280" r="3" fill="#2E5DA8" stroke="none" />
+          <path d="M820 280 L980 180 L1080 320 L900 420 L1100 540" stroke="#2E5DA8" strokeOpacity="0.4" />
+          <path d="M980 180 L1080 320" />
+          <path d="M820 280 L900 420" />
+          <rect x="780" y="260" width="80" height="40" rx="2" />
+          <rect x="940" y="160" width="80" height="40" rx="2" />
+          <rect x="1040" y="300" width="80" height="40" rx="2" />
+          <rect x="860" y="400" width="80" height="40" rx="2" />
+          <rect x="1060" y="520" width="80" height="40" rx="2" />
+        </g>
+      </svg>
     </div>
   );
 }
 
-Object.assign(window, { Nav, Hero, BCSMark, BCSMonogram, useReveal, scrollToId, Tick });
+Object.assign(window, { Nav, Hero, BCSMark, useReveal, scrollToId, Tick });
