@@ -48,7 +48,14 @@ function ConceptGallery() {
         {concepts.map((c) => (
           <article className="shelf-card" key={c.id}>
             <div className="shelf-card-media">
-              <img src={c.image} alt={c.alt} className="shelf-card-img" loading="lazy" />
+              {c.video ? (
+                <video className="shelf-card-img" autoPlay muted loop playsInline preload="metadata" poster={c.image} aria-label={c.alt}>
+                  <source src={c.videoWebm} type="video/webm" />
+                  <source src={c.video} type="video/mp4" />
+                </video>
+              ) : (
+                <img src={c.image} alt={c.alt} className="shelf-card-img" loading="lazy" />
+              )}
               <span className="shelf-badge">Concept</span>
             </div>
             <div className="shelf-card-body">
@@ -82,7 +89,7 @@ function Apparel() {
 
         <div className="apparel-grid">
           <figure className="apparel-bull">
-            <img src="brand/bull-b3-cream.png?v=b2046" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
+            <img src="brand/bull-b3-cream.png?v=b2047" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
             <figcaption className="apparel-bull-cap">The whole bull. He is the mark on every piece.</figcaption>
           </figure>
 
