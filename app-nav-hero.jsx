@@ -7,6 +7,34 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
 /* Expose to other JSX modules loaded after this one */
 if (typeof window !== "undefined") window.BOOKING_URL = BOOKING_URL;
 
+/* ---------- Hash routing: one topic per page ---------- */
+const BCS_PAGES = [
+  { id: "home",     hash: "#/",         label: "Home" },
+  { id: "services", hash: "#/services", label: "What we do" },
+  { id: "pricing",  hash: "#/pricing",  label: "Pricing" },
+  { id: "about",    hash: "#/about",    label: "About" },
+  { id: "apparel",  hash: "#/apparel",  label: "Apparel" },
+  { id: "contact",  hash: "#/contact",  label: "Contact" },
+];
+const BCS_LEGACY_HASHES = {
+  "top": "home", "problem": "home",
+  "services": "services", "why": "about", "process": "services",
+  "pricing": "pricing", "about": "about", "durham": "about",
+  "apparel": "apparel", "intake": "contact",
+};
+function bcsParseRoute() {
+  const raw = window.location.hash.replace(/^#/, "");
+  if (raw === "" || raw === "/") return "home";
+  const byPath = BCS_PAGES.find((p) => p.hash === "#" + raw);
+  if (byPath) return byPath.id;
+  if (BCS_LEGACY_HASHES[raw]) return BCS_LEGACY_HASHES[raw];
+  return "home";
+}
+if (typeof window !== "undefined") {
+  window.BCS_PAGES = BCS_PAGES;
+  window.bcsParseRoute = bcsParseRoute;
+}
+
 /* ---------- Hooks & utilities ---------- */
 function useReveal() {
   const ref = useRef(null);
@@ -30,7 +58,7 @@ function useReveal() {
   return ref;
 }
 
-/* Smooth scroll to id */
+/* Smooth scroll to id (kept for in-page anchors inside the intake form) */
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -38,10 +66,19 @@ function scrollToId(id) {
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
-/* ---------- Nav ---------- */
+/* ---------- Nav ----------
+   Header brand: the full B3 bull, big (118px, the pre-redesign standard),
+   FROZEN. No animation on the header bull, ever, and no scroll shrink.
+   The menu is run by a separate little bull: on open he hooks the menu
+   with his horn, throws it back over his body, and the menu rolls out
+   as a free full-width strip under the bar. Not a boxed panel. */
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [menuState, setMenuState] = useState("closed"); /* closed | open | closing */
+  const [throwing, setThrowing] = useState(false);
+  const [route, setRoute] = useState(() => bcsParseRoute());
+  const closeTimer = useRef(null);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -49,66 +86,113 @@ function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { id: "services", label: "Services" },
-    { id: "why", label: "Why us" },
-    { id: "pricing", label: "Pricing" },
-    { id: "process", label: "Process" },
-    { id: "apparel", label: "Apparel" },
-    { id: "intake", label: "Contact" },
-  ];
+  useEffect(() => {
+    const onHash = () => {
+      setRoute(bcsParseRoute());
+      setMenuState("closed");
+      setThrowing(false);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  useEffect(() => {
+    if (menuState !== "open") return;
+    const onKey = (e) => { if (e.key === "Escape") closeMenu(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuState]);
+
+  useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
+
+  const reducedMotion = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const openMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMenuState("open");
+    if (!reducedMotion()) setThrowing(true);
+  };
+  const closeMenu = () => {
+    setThrowing(false);
+    if (reducedMotion()) { setMenuState("closed"); return; }
+    setMenuState("closing");
+    closeTimer.current = setTimeout(() => setMenuState("closed"), 260);
+  };
+  const toggleMenu = () => {
+    if (menuState === "open") closeMenu();
+    else openMenu();
+  };
+
+  const menuShown = menuState === "open" || menuState === "closing";
 
   return (
-    <header className={"nav" + (scrolled ? " nav-scrolled" : "")}>
+    <header className={"nav" + (scrolled ? " nav-scrolled" : "") + (menuShown ? " nav-menu-open" : "")}>
       <div className="container nav-inner">
-        <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); scrollToId("top"); }}>
+        <a href="#/" className="brand" aria-label="Bull City Systems, home">
           <BCSMark size={118} />
           <span className="brand-text">
             <span className="brand-name">Bull City Systems</span>
           </span>
         </a>
-        <nav className="nav-links">
-          {links.map((l) => (
-            <a key={l.id} href={"#" + l.id} onClick={(e) => { e.preventDefault(); scrollToId(l.id); }}>
-              {l.label}
+        <div className="nav-actions">
+          <button
+            type="button"
+            className={"menu-btn" + (throwing ? " throwing" : "")}
+            aria-expanded={menuState === "open"}
+            aria-controls="site-menu"
+            aria-haspopup="true"
+            onClick={toggleMenu}
+          >
+            <img
+              src="brand/bull-b3-cream.png"
+              alt=""
+              aria-hidden="true"
+              className="menu-bull"
+              onAnimationEnd={() => setThrowing(false)}
+            />
+            <span className="menu-btn-label">Menu</span>
+          </button>
+          <div className="nav-cta">
+            <a className="btn btn-primary" href="/book/">
+              Book
+              <span className="arrow">→</span>
             </a>
-          ))}
-        </nav>
-        <div className="nav-cta">
-          <a className="btn btn-ghost" href="/book/">
-            Book a call
-            <span className="arrow">→</span>
-          </a>
+          </div>
         </div>
-        <button className="nav-burger" aria-label="Menu" onClick={() => setOpen((v) => !v)}>
-          <span /><span /><span />
-        </button>
       </div>
-      {open && (
-        <div className="nav-mobile">
-          {links.map((l) => (
-            <a key={l.id} href={"#" + l.id}
-               onClick={(e) => { e.preventDefault(); setOpen(false); scrollToId(l.id); }}>
-              {l.label}
-            </a>
-          ))}
-          <a className="btn btn-primary" href="/book/" onClick={() => setOpen(false)}>
-            Book a call <span className="arrow">→</span>
-          </a>
+      {menuShown && (
+        <div className={"site-menu" + (menuState === "closing" ? " rolling-up" : "")} id="site-menu">
+          <nav className="site-menu-links" aria-label="Site">
+            {BCS_PAGES.map((p, i) => (
+              <a
+                key={p.id}
+                href={p.hash}
+                className="site-menu-link"
+                style={{ animationDelay: (340 + i * 60) + "ms" }}
+                aria-current={route === p.id ? "page" : undefined}
+                onClick={() => closeMenu()}
+              >
+                {p.label}
+              </a>
+            ))}
+          </nav>
         </div>
       )}
     </header>
   );
 }
 
-/* Mark / monogram: simple BCS in a notched square */
+/* The B3 bull. In the header he renders at 118px tall and never moves. */
 function BCSMark({ size = 36 }) {
   return (
     <img src="brand/bull-b3-cream.png" width={Math.round(size * 1.954)} height={size} className="bcs-mark" alt="" aria-hidden="true" />
   );
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (Home): the name, the promise once, one button ---------- */
 function Hero() {
   const ref = useReveal();
   return (
@@ -116,58 +200,53 @@ function Hero() {
       <HeroBackdrop />
       <div className="container hero-inner" ref={ref}>
         <div className="hero-meta">
-          <span className="eyebrow">Bull City Systems · Durham, NC</span>
-          <span className="hero-meta-sep" />
-          <span className="eyebrow-mute">Est. 2025 · <span className="t-vet">Veteran-owned</span></span>
+          <span className="eyebrow">Technical design studio · Durham, NC</span>
         </div>
 
-        <h1 className="h-display hero-title">
-          Your tech is costing you
-          <br />
-          customers. <em className="hero-italic">Let's fix that.</em>
-        </h1>
-
-        <p className="lede hero-lede">
-          Missed calls. No online booking. A website that embarrasses you.
-          Bull City Systems builds the websites, automation,
-          and IT systems Durham businesses should have had years ago, from customer intake
-          to Microsoft 365 to day-to-day support.
-        </p>
+        <h1 className="h-display hero-title">Bull City Systems</h1>
 
         <blockquote className="hero-promise">
           "When you hire Bull City Systems, you're my only customer. I walk you
-          through it hand in hand, from first call to final delivery, and I don't
-          stop until it's done the way you want it."
+          through it hand in hand, flash to bang, and I don't stop until it's
+          done the way you want it."
           <cite>Josef Gray, founder</cite>
         </blockquote>
 
         <div className="hero-ctas">
           <a className="btn btn-primary" href="/book/">
-            Book a call <span className="arrow">→</span>
-          </a>
-          <a className="btn btn-ghost" href="tel:+19192839006">
-            Call (919) 283-9006
+            Book a consultation <span className="arrow">→</span>
           </a>
         </div>
-
-        <p className="hero-capacity">
-          I take on one automation build at a time. If the calendar's full,
-          I'll tell you when the next slot opens.
-        </p>
-
-        <ul className="hero-trust">
-          <li><Tick /> <span className="t-vet">Veteran-owned</span></li>
-          <li><Tick /> Durham-based</li>
-          <li><Tick /> Built for small business</li>
-          <li><Tick /> Affordable flat-fee options</li>
-          <li><Tick /> Practical technical guidance</li>
-        </ul>
       </div>
+    </section>
+  );
+}
 
-      <div className="hero-coords">
-        <span>35.9940° N</span>
-        <span className="hero-coords-bar" />
-        <span>78.8986° W</span>
+/* ---------- Home: short what-we-do summary (detail lives on its page) ---------- */
+const HOME_SUMMARY = [
+  { title: "Custom software", note: "Internal tools, portals, dashboards." },
+  { title: "AI automation & integration", note: "Including the AI Jumpstart." },
+  { title: "Websites", note: "Design, build, and launch." },
+  { title: "Online stores", note: "Checkout that fits how you sell." },
+];
+
+function HomeSummary() {
+  const ref = useReveal();
+  return (
+    <section className="home-summary">
+      <div className="container reveal" ref={ref}>
+        <div className="section-head">
+          <span className="numeral">What we do</span>
+        </div>
+        <div className="home-summary-list">
+          {HOME_SUMMARY.map((s) => (
+            <a key={s.title} href="#/services" className="home-summary-row">
+              <span className="home-summary-title">{s.title}</span>
+              <span className="home-summary-note">{s.note}</span>
+              <span className="home-summary-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -182,32 +261,14 @@ function Tick() {
   );
 }
 
-/* Hero backdrop: blueprint grid + soft warm vignette + a hairline diagram */
+/* Hero backdrop: blueprint grid + soft warm vignette */
 function HeroBackdrop() {
   return (
     <div className="hero-bg" aria-hidden="true">
       <div className="hero-grid" />
       <div className="hero-vignette" />
-      <svg className="hero-diagram" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-        {/* sparse hairline schematic suggesting interconnected systems */}
-        <g stroke="#2A2F38" strokeWidth="1" fill="none">
-          <circle cx="980" cy="180" r="3" fill="#C8932E" stroke="none" />
-          <circle cx="1080" cy="320" r="3" fill="#2E5DA8" stroke="none" />
-          <circle cx="900" cy="420" r="3" fill="#C8932E" stroke="none" />
-          <circle cx="1100" cy="540" r="3" fill="#A23A28" stroke="none" />
-          <circle cx="820" cy="280" r="3" fill="#2E5DA8" stroke="none" />
-          <path d="M820 280 L980 180 L1080 320 L900 420 L1100 540" stroke="#2E5DA8" strokeOpacity="0.4" />
-          <path d="M980 180 L1080 320" />
-          <path d="M820 280 L900 420" />
-          <rect x="780" y="260" width="80" height="40" rx="2" />
-          <rect x="940" y="160" width="80" height="40" rx="2" />
-          <rect x="1040" y="300" width="80" height="40" rx="2" />
-          <rect x="860" y="400" width="80" height="40" rx="2" />
-          <rect x="1060" y="520" width="80" height="40" rx="2" />
-        </g>
-      </svg>
     </div>
   );
 }
 
-Object.assign(window, { Nav, Hero, BCSMark, useReveal, scrollToId, Tick });
+Object.assign(window, { Nav, Hero, HomeSummary, BCSMark, useReveal, scrollToId, Tick });
