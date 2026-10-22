@@ -1,6 +1,6 @@
 /* global React */
 /* =================================================================
-   WORK: proof. Three projects, one line each, a link.
+   WORK: proof. Four projects, one line each, a link.
    Edit WORK below; the component is data-driven.
    ================================================================= */
 
@@ -24,6 +24,13 @@ const WORK = [
     url: "https://politicalintegritynetwork.org",
     what: "Civic tool · built and run",
     line: "Government accountability research, published as a working product, not a PDF.",
+    tag: "CUSTOM BUILD",
+  },
+  {
+    name: "The Quiet Ledger",
+    url: "https://thequietledger.org",
+    what: "Civic tool · built and run",
+    line: "Every bill graded against the same published standard, and who actually controls it, mapped in the open.",
     tag: "CUSTOM BUILD",
   },
 ];

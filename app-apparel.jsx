@@ -32,16 +32,6 @@ function ShopShelf() {
   );
 }
 
-function ConceptGallery() {
-  return (
-    <div className="concepts">
-      <p className="concept-intro">
-        The Bull City Systems apparel line is in production. New boards are on the way.
-      </p>
-    </div>
-  );
-}
-
 function Apparel() {
   const ref = useReveal();
   return (
@@ -74,4 +64,4 @@ function Apparel() {
   );
 }
 
-Object.assign(window, { Apparel, ShopShelf, ConceptGallery });
+Object.assign(window, { Apparel, ShopShelf });

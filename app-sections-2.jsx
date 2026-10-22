@@ -8,16 +8,8 @@ const TIERS = [
     sub: "30 min",
     desc: "I look at what a customer sees: Google, your site on a phone, booking. Then a 30-minute chat. You get the three things I noticed.",
     items: ["Public-footprint review", "30-minute call", "Three things I noticed, in writing"],
-    cta: "Book the Scan",
-  },
-  {
-    name: "Starter Presence",
-    price: "$499",
-    sub: "all-in · one page",
-    desc: "A clean, fast one-pager that makes you look like a real business and takes bookings. The fastest way to Be Found.",
-    items: ["Single-page custom site", "Mobile-first", "Booking + intake wired in", "Domain, hosting, hand over"],
-    cta: "Start small",
-    go: "I SHIP IN 72 HOURS",
+    cta: "Book the free call",
+    free: true,
   },
   {
     name: "Map",
@@ -30,20 +22,29 @@ const TIERS = [
     go: "COMES OFF YOUR BUILD",
   },
   {
-    name: "Be Found + Unify",
-    price: "$2,499",
-    sub: "all-in · Map included",
-    desc: "Fix the footprint. Google profile claimed and complete, one clear Book button, every listing matched, a brand kit from the logo you already have.",
-    items: ["Map included", "Google profile + listings", "Multi-page site or redesign", "Brand kit, copy, hand over"],
-    cta: "Build it",
+    name: "Starter Presence",
+    price: "$499",
+    sub: "all-in · one page",
+    desc: "A clean, fast one-pager that makes you look like a real business and takes bookings. The fastest way to Be Found.",
+    items: ["Single-page custom site", "Mobile-first", "Booking + intake wired in", "Domain, hosting, hand over"],
+    cta: "Start small",
+    go: "I SHIP IN 72 HOURS",
   },
   {
-    name: "Link + Lighten",
-    price: "$2,999",
+    name: "AI Jumpstart",
+    price: "$999",
+    sub: "flat · setup + training",
+    desc: "AI set up on your real systems, on accounts you own, with you and your crew trained on your own work. One flat price, no hourly meter, no upsell ladder.",
+    items: ["Setup on your accounts", "Your prompt library", "Training for you and your crew", "The playbook, written down"],
+    cta: "Jumpstart it",
+  },
+  {
+    name: "The Build",
+    price: "From $2,499",
     sub: "all-in · Map included",
-    desc: "Wire the tools. Live schedule on the site, calendar as source of truth, reply drafts and reminders, a Monday digest, AI only where you approve the result.",
-    items: ["Map included", "Booking + calendar integration", "Automations with an off switch", "AI intake, control panel, hand over"],
-    cta: "Wire it",
+    desc: "The full build: footprint fixed, every listing matched, tools wired together, automations you approve. The BULL letters you pick, done in order, handed over so you can run it without me.",
+    items: ["Map included", "Google profile + listings", "Multi-page site or redesign", "Booking + calendar integration", "Automations with an off switch", "Hand over, documented"],
+    cta: "Build it",
   },
   {
     name: "Care",
@@ -101,7 +102,8 @@ function Pricing() {
               </ul>
               <a
                 className={"btn " + (t.feature ? "btn-primary" : "btn-ghost") + " tier-cta"}
-                href="/book/"
+                href={t.free ? ((typeof window !== "undefined" && window.BOOKING_URL) || "/book/") : "/book/"}
+                {...(t.free ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 {t.cta} <span className="arrow">→</span>
               </a>
@@ -131,7 +133,7 @@ const STEPS = [
       { l: "L", t: "Lock in control",   q: "Can you run it without me?" },
     ] },
   { n: "04", t: "Hand over", who: "Included",              d: "You run it while I watch. Short videos, a list of every account you own, and a teach-back where you do it, not me. Done means you can change it, see it, pause it, and get help without calling me first." },
-  { n: "05", t: "Care",      who: "$350 or $650 / month",  d: "I keep it running and send one page of results a month. Fixes, small improvements, and the hours-back number measured, not estimated." },
+  { n: "05", t: "Care",      who: "$350–650 / month",  d: "I keep it running and send one page of results a month. Fixes, small improvements, and the hours-back number measured, not estimated." },
 ];
 
 function Process() {

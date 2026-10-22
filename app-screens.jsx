@@ -28,7 +28,7 @@ const SCREENS = [
   { id: "durham",       label: "Durham" },
   { id: "about",        label: "About" },
   { id: "apparel",      label: "Apparel" },
-  { id: "intake",       label: "Contact" },
+  { id: "intake",       label: "Start" },
 ];
 
 function screenIndexFromHash() {

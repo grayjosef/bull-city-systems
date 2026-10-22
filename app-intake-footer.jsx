@@ -2,9 +2,9 @@
 /* ---------------------------------------------------------------------------
  * app-intake-footer.jsx
  *
- * The Intake component now lives in app-intake-v2.jsx (new multi-service form
- * with conditional sub-forms and 72-hour confirmation). This file holds
- * the Footer + BCSignature mounting only.
+ * Holds the Footer, the floating call button, and the BCSignature
+ * mounting. (The old homepage intake form was removed Oct 22; the
+ * Start screen in app-start.jsx carries the two booking paths.)
  * ------------------------------------------------------------------------- */
 
 function Footer() {
