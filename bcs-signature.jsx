@@ -41,7 +41,7 @@ function BCSignature() {
         </a>
       </div>
 
-      {open && (
+      {open && ReactDOM.createPortal(
         <div className="bcs-flag-panel" onClick={() => setOpen(false)}>
           <div className="bcs-flag-panel-inner" onClick={(e) => e.stopPropagation()}>
             <span className="bcs-flag-eyebrow">DURHAM, NC</span>
@@ -55,7 +55,8 @@ function BCSignature() {
             <p className="bcs-flag-foot">Seven stars · The Pleiades · The New Spirit of Durham</p>
             <button className="bcs-flag-close" onClick={() => setOpen(false)}>Close</button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </React.Fragment>
   );

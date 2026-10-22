@@ -40,64 +40,77 @@ function scrollToId(id) {
 
 /* ---------- Nav ---------- */
 function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState("top");
+
+  // track which screen is active so the menu can highlight it
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    const sync = () => setCurrent(document.body.getAttribute("data-screen") || "top");
+    sync();
+    const mo = new MutationObserver(sync);
+    mo.observe(document.body, { attributes: true, attributeFilter: ["data-screen"] });
+    return () => mo.disconnect();
   }, []);
 
-  const links = [
-    { id: "services", label: "Services" },
-    { id: "why", label: "Why us" },
-    { id: "pricing", label: "Pricing" },
-    { id: "process", label: "Process" },
-    { id: "apparel", label: "Apparel" },
-    { id: "intake", label: "Contact" },
-  ];
+  // Esc closes; body class drives desktop push-aside layout
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", open);
+    if (!open) return;
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const links = (window.SCREENS || []).filter((s) => s.id !== "top");
+
+  function nav(id) {
+    setOpen(false);
+    // let the menu start closing before the screen slides
+    setTimeout(() => scrollToId(id), 120);
+  }
 
   return (
-    <header className={"nav" + (scrolled ? " nav-scrolled" : "")}>
-      <div className="container nav-inner">
-        <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); scrollToId("top"); }}>
-          <BCSMark size={118} />
-          <span className="brand-text">
-            <span className="brand-name">Bull City Systems</span>
-          </span>
-        </a>
-        <nav className="nav-links">
-          {links.map((l) => (
-            <a key={l.id} href={"#" + l.id} onClick={(e) => { e.preventDefault(); scrollToId(l.id); }}>
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <div className="nav-cta">
-          <a className="btn btn-ghost" href="/book/">
-            Book a call
-            <span className="arrow">→</span>
+    <React.Fragment>
+      <header className={"nav nav-deck" + (open ? " bull-menu-open" : "")}>
+        <div className="container nav-inner">
+          <a href="#top" className="brand" onClick={(e) => { e.preventDefault(); nav("top"); }}>
+            <BCSMark size={118} />
+            <span className="brand-text">
+              <span className="brand-name">Bull City Systems</span>
+            </span>
           </a>
+          <button className="bull-menu-btn"
+                  aria-label={open ? "Close menu" : "Open menu"}
+                  aria-expanded={open}
+                  onClick={() => setOpen((v) => !v)}>
+            <span className="hb" aria-hidden="true"><span /><span /><span /></span>
+          </button>
         </div>
-        <button className="nav-burger" aria-label="Menu" onClick={() => setOpen((v) => !v)}>
-          <span /><span /><span />
+      </header>
+
+      <div className={"bull-menu-scrim" + (open ? " open" : "")} onClick={() => setOpen(false)} />
+      <nav className={"bull-menu" + (open ? " open" : "")} aria-hidden={!open}>
+        <button type="button" className="bm-back" onClick={() => setOpen(false)}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Back
         </button>
-      </div>
-      {open && (
-        <div className="nav-mobile">
-          {links.map((l) => (
-            <a key={l.id} href={"#" + l.id}
-               onClick={(e) => { e.preventDefault(); setOpen(false); scrollToId(l.id); }}>
-              {l.label}
-            </a>
-          ))}
-          <a className="btn btn-primary" href="/book/" onClick={() => setOpen(false)}>
-            Book a call <span className="arrow">→</span>
+        <span className="bull-menu-eyebrow">Bull City Systems · Durham, NC</span>
+        {links.map((l, i) => (
+          <a key={l.id}
+             href={"#" + l.id}
+             className={"bm-link" + (current === l.id ? " on" : "")}
+             style={{ transitionDelay: open ? (60 + i * 38) + "ms" : "0ms" }}
+             onClick={(e) => { e.preventDefault(); nav(l.id); }}>
+            <span className="bm-num">{String(i + 1).padStart(2, "0")}</span>
+            {l.label}
           </a>
+        ))}
+        <div className="bull-menu-foot">
+          <a className="btn btn-primary" href="/book/">Book a call <span className="arrow">→</span></a>
+          <a className="bm-phone" href="tel:+19192839006">(919) 283-9006</a>
         </div>
-      )}
-    </header>
+      </nav>
+    </React.Fragment>
   );
 }
 
@@ -164,11 +177,7 @@ function Hero() {
         </ul>
       </div>
 
-      <div className="hero-coords">
-        <span>35.9940° N</span>
-        <span className="hero-coords-bar" />
-        <span>78.8986° W</span>
-      </div>
+
     </section>
   );
 }

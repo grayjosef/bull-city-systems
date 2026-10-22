@@ -1,139 +1,50 @@
 /* global React */
 const { useState: useState2, useEffect: useEffect2, useRef: useRef2 } = React;
 
-/* ---------- Problem Section ---------- */
-function Problem() {
-  const ref = useReveal();
-  const problems = [
-    "Outdated website",
-    "Broken intake forms",
-    "Manual busywork",
-    "Scattered files & docs",
-    "Weak automation",
-    "Messy Microsoft 365",
-  ];
-  return (
-    <section id="problem" className="problem">
-      <div className="container">
-        <div className="reveal" ref={ref}>
-          <div className="section-head">
-            <span className="numeral">02 / Problem</span>
-          </div>
-          <h2 className="h-section problem-title">
-            Most businesses do not have one tech problem.
-            <br />
-            <span className="t-mute">They have a stack of them.</span>
-          </h2>
-          <p className="lede problem-lede">
-            An outdated website, a broken intake form, manual busywork, scattered files,
-            weak automation, and a messy Microsoft 365 setup are not separate annoyances.
-            They are connected business problems, and they compound every week you wait.
-          </p>
-        </div>
-
-        <div className="problem-stack">
-          {problems.map((p, i) => (
-            <div className="problem-row" key={p} style={{ animationDelay: (i * 60) + "ms" }}>
-              <span className="problem-num">{String(i + 1).padStart(2, "0")}</span>
-              <span className="problem-label">{p}</span>
-              <span className="problem-bar"><span className="problem-bar-fill" style={{ width: (40 + i * 9) + "%" }} /></span>
-              <span className="problem-status">unresolved</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- Services Section ---------- */
 const SERVICES = [
   {
     n: "01",
-    title: "Website design & development",
-    body: "Custom websites built to load fast, look sharp, and turn visitors into customers, designed around your brand, engineered to perform.",
-    points: ["Custom design & build", "Mobile-first responsive", "SEO basics & analytics"],
+    title: "Websites",
+    body: "Fast, mobile-first, built to turn a stranger into a booking. Google profile, listings, and the site all pointing at one door.",
+    points: ["Design & build", "Booking + intake wired in", "Google profile & listings", "SEO basics & analytics"],
     accent: "blue",
   },
   {
     n: "02",
-    title: "Branding & identity",
-    body: "Logos, visual identity, and brand systems that make you look like the business you're becoming, not a template someone else is also using.",
-    points: ["Logo & visual identity", "Brand guidelines", "Marketing collateral"],
+    title: "Brand & messaging",
+    body: "Same name, same voice, same hours everywhere. A small brand kit from the logo you already have, and copy that explains why you in seconds.",
+    points: ["Brand kit from your existing logo", "Website & offer copy", "Every listing matched", "Sales collateral"],
     accent: "brass",
   },
   {
     n: "03",
-    title: "Messaging & copy",
-    body: "Words that sell. I sharpen your story, your offers, and your calls to action so a visitor understands why you in seconds, not minutes.",
-    points: ["Website copy", "Offer & positioning", "Email & sales collateral"],
-    accent: "blue",
+    title: "Custom software",
+    body: "Internal tools, portals, dashboards, scheduling, the things off-the-shelf SaaS can't do. Scoped, quoted, built, deployed, maintained.",
+    points: ["Discovery & scoping", "Web, mobile, or cloud-native", "CI/CD & monitoring", "Deploy & maintain"],
+    accent: "brick",
+    cta: "email",
   },
   {
     n: "04",
-    title: "Business development",
-    body: "Go-to-market strategy, offer design, and lead systems: the business thinking that has to come before the technology, from someone who's operated.",
-    points: ["Offer design", "Lead systems & intake", "Growth roadmaps"],
-    accent: "brick",
+    title: "IT & cloud",
+    body: "Microsoft 365 and Google set up right, secured, documented, and handed back with training. Devices, accounts, backups, and the Friday-afternoon fires.",
+    points: ["M365 / Google setup & migration", "MFA, backups, hardening", "Device & account management", "Helpdesk on call"],
+    accent: "blue",
   },
   {
     n: "05",
-    title: "Software engineering",
-    body: "Senior-level engineering capacity for teams that need it: architecture reviews, code audits, and technical leadership on demand, no agency bloat.",
-    points: ["Architecture reviews", "Code audits", "Fractional tech leadership"],
+    title: "AI integration",
+    body: "Real AI in your real systems, doing real work. Reads your leads, drafts your replies, runs your queues. You approve the result. It never cancels a customer.",
+    points: ["Intake that thinks", "Copilots over your own docs", "Support that drafts itself", "AI Jumpstart: setup + training, $999"],
     accent: "brass",
   },
   {
     n: "06",
-    title: "Custom software builds",
-    body: "Bespoke software built end-to-end: internal tools, customer portals, dashboards, scheduling systems. Scoped, quoted, and delivered. The things off-the-shelf SaaS can't do.",
-    points: ["Discovery & scoping", "Full-stack build", "Deploy & maintenance"],
-    accent: "blue",
-    cta: "email",
-  },
-  {
-    n: "07",
-    title: "Custom cloud applications",
-    body: "Cloud-native applications designed to scale, architected on modern infrastructure, deployed with CI/CD, monitored in production. Built for growth, not just launch.",
-    points: ["Cloud architecture", "CI/CD pipelines", "Monitoring & scaling"],
+    title: "Advisory",
+    body: "An hour with an operator who has run real systems. Stack reviews, vendor selection, second opinions on a quote, roadmaps. No agency bloat.",
+    points: ["Stack & vendor review", "Build vs. buy", "Second opinion on a quote", "Fractional tech leadership"],
     accent: "brick",
-    cta: "email",
-  },
-  {
-    n: "08",
-    title: "IT security",
-    body: "Security baselines, audits, and hardening for small businesses that can't afford a breach: MFA everywhere, backups that work, endpoint protection, phishing-resistant setups.",
-    points: ["Security audits", "MFA & access hardening", "Backup & recovery"],
-    accent: "brass",
-  },
-  {
-    n: "09",
-    title: "Managed IT services",
-    body: "Your outsourced IT department: devices, accounts, vendor coordination, and the things that always seem to break on Friday. Proactive, documented, one call away.",
-    points: ["Helpdesk & support", "Device & account management", "Vendor coordination"],
-    accent: "blue",
-  },
-  {
-    n: "10",
-    title: "Cloud infrastructure",
-    body: "Cloud architecture, migrations, and Microsoft 365 management, set up right, secured, documented, and handed back to you with training.",
-    points: ["M365 setup & migration", "Cloud architecture", "Backup & compliance"],
-    accent: "brick",
-  },
-  {
-    n: "11",
-    title: "Hardware consulting",
-    body: "Workstations, networking, point-of-sale, field hardware: spec'd, sourced, and set up for how your team actually works. No oversold gear, no underpowered regrets.",
-    points: ["Hardware spec & sourcing", "Network setup", "POS & field systems"],
-    accent: "brass",
-    cta: "email",
-  },
-  {
-    n: "12",
-    title: "AI integrations",
-    body: "Real AI in your real systems, doing real work. Not a chatbot widget. I build AI that reads your docs, routes your leads, drafts your replies, and runs your queues.",
-    points: ["Intake that thinks", "Internal copilots over your docs", "Support that closes itself", "Operational agents"],
-    accent: "blue",
   },
 ];
 
@@ -144,18 +55,17 @@ function Services() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">05 / Services</span>
+            <span className="numeral">03 / Services</span>
           </div>
           <div className="services-head">
             <h2 className="h-section">
-              Twelve disciplines.<br />
-              <span className="t-mute">Small business to enterprise.</span>
+              Six things I do.<br />
+              <span className="t-mute">Each one, end to end.</span>
             </h2>
             <p className="lede services-lede">
               Whether you're a five-person shop on Foster Street or a 500-person
               organization with a procurement office, the work is the same: real
-              technical execution, written down, delivered to spec. Plus trainings
-              that actually stick.
+              technical execution, written down, delivered to spec.
             </p>
           </div>
         </div>
@@ -169,34 +79,37 @@ function Services() {
 }
 
 function ServiceCard({ s }) {
-  const [hover, setHover] = useState2(false);
+  const [open, setOpen] = useState2(false);
+  const quoteHref = "mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request: " + s.title) + "&body=" + encodeURIComponent("Hi,\n\nI'd like a quote for " + s.title.toLowerCase() + ". A quick summary of what I'm trying to build:\n\n- What it does:\n- Who uses it:\n- Rough timeline:\n- Approximate budget:\n\nThanks.\n");
   return (
     <article
-      className={"svc-card accent-" + s.accent + (hover ? " is-hover" : "") + (s.cta === "email" ? " has-quote-cta" : "")}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className={"svc-card accent-" + s.accent + (open ? " is-open is-hover" : "") + (s.cta === "email" ? " has-quote-cta" : "")}
     >
       <div className="card-accent-top" />
-      <header className="svc-head">
-        <span className="numeral">{s.n}</span>
-        <span className="svc-dot" />
-      </header>
-      <h3 className="svc-title">{s.title}</h3>
-      <p className="svc-body body">{s.body}</p>
-      <ul className="svc-points">
-        {s.points.map((p) => (
-          <li key={p}><span className="svc-tick">+</span>{p}</li>
-        ))}
-      </ul>
-      {s.cta === "email" && (
-        <a
-          className="svc-quote-cta"
-          href={"mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request: " + s.title) + "&body=" + encodeURIComponent("Hi,\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n- What it does:\n- Who uses it:\n- Rough timeline:\n- Approximate budget:\n\nThanks.\n")}
-        >
-          <span className="svc-quote-dot" />
-          Email for a quote <span className="arrow">→</span>
-        </a>
-      )}
+      <button type="button" className="svc-toggle" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+        <header className="svc-head">
+          <span className="numeral">{s.n}</span>
+          <span className="svc-dot" />
+        </header>
+        <h3 className="svc-title">
+          {s.title}
+          <svg className="svc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </h3>
+      </button>
+      <div className="svc-panel" hidden={!open}>
+        <p className="svc-body body">{s.body}</p>
+        <ul className="svc-points">
+          {s.points.map((p) => (
+            <li key={p}><span className="svc-tick">+</span>{p}</li>
+          ))}
+        </ul>
+        {s.cta === "email" && (
+          <a className="svc-quote-cta" href={quoteHref}>
+            <span className="svc-quote-dot" />
+            Email for a quote <span className="arrow">→</span>
+          </a>
+        )}
+      </div>
     </article>
   );
 }
@@ -233,7 +146,7 @@ function Why() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">06 / Why Bull City Systems</span>
+            <span className="numeral">07 / Why me</span>
           </div>
           <h2 className="h-section why-title">
             I build systems the way<br />
@@ -255,4 +168,4 @@ function Why() {
   );
 }
 
-Object.assign(window, { Problem, Services, Why });
+Object.assign(window, { Services, Why });

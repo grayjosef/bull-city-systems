@@ -48,7 +48,7 @@ function AIJumpstart() {
     <section id="ai-jumpstart" className="aijs">
       <div className="container reveal" ref={ref}>
         <div className="section-head">
-          <span className="numeral">04 / AI Jumpstart</span>
+          <span className="numeral">03a / AI Jumpstart</span>
           <span className="aijs-id">SERVICE · SETUP + TRAINING · TRIANGLE, NC</span>
         </div>
 
@@ -62,12 +62,10 @@ function AIJumpstart() {
           quietly get faster than everyone else on the street. The owners winning
           with it are not technical. They had one person come in, learn how the
           business actually runs, set the tools up right, and teach the crew on
-          their own work. That is this service. It is the same play Mark Cuban
-          keeps pointing at: companies do not need more AI hype, they need
-          somebody who can walk in and implement it.
+          their own work. That is this service.
         </p>
 
-        <p className="aijs-tap-hint">Every card opens. This is exactly what the $999 buys, no fine print:</p>
+        <p className="aijs-tap-hint">Exactly what the $999 buys. No fine print.</p>
         <div className="aijs-grid">
           {JUMPSTART_GETS.map((it, i) => (
             <article

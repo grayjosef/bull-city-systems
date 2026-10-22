@@ -103,6 +103,7 @@
 <link rel="stylesheet" href="welcome.css?v=b2049" />
 <link rel="stylesheet" href="intake-v2.css?v=b2049" />
 <link rel="stylesheet" href="bcs-signature.css?v=b2049" />
+<link rel="stylesheet" href="screens.css?v=b2051" />
 </head>
 <body data-hero="default" data-services="grid" data-accent="gold">
 
@@ -113,18 +114,20 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
 <script type="text/babel" src="app-welcome.jsx?v=b2049"></script>
-<script type="text/babel" src="app-nav-hero.jsx?v=b2049"></script>
-<script type="text/babel" src="app-ai-gap.jsx?v=b2049"></script>
-<script type="text/babel" src="app-ai-jumpstart.jsx?v=b2049"></script>
-<script type="text/babel" src="app-sections-1.jsx?v=b2049"></script>
-<script type="text/babel" src="app-sections-2.jsx?v=b2049"></script>
-<script type="text/babel" src="app-about.jsx?v=b2049"></script>
+<script type="text/babel" src="app-screens.jsx?v=b2051"></script>
+<script type="text/babel" src="app-nav-hero.jsx?v=b2051"></script>
+<script type="text/babel" src="app-ai-gap.jsx?v=b2051"></script>
+<script type="text/babel" src="app-ai-jumpstart.jsx?v=b2051"></script>
+<script type="text/babel" src="app-sections-1.jsx?v=b2051"></script>
+<script type="text/babel" src="app-sections-2.jsx?v=b2052"></script>
+<script type="text/babel" src="app-work.jsx?v=b2051"></script>
+<script type="text/babel" src="app-about.jsx?v=b2051"></script>
 <script src="shop-listings.js?v=b2049"></script>
 <script src="concept-listings.js?v=b2049"></script>
-<script type="text/babel" src="app-apparel.jsx?v=b2049"></script>
-<script type="text/babel" src="app-intake-footer.jsx?v=b2049"></script>
-<script type="text/babel" src="app-intake-v2.jsx?v=b2049"></script>
-<script type="text/babel" src="bcs-signature.jsx?v=b2049"></script>
+<script type="text/babel" src="app-apparel.jsx?v=b2051"></script>
+<script type="text/babel" src="app-intake-footer.jsx?v=b2051"></script>
+<script type="text/babel" src="app-intake-v2.jsx?v=b2051"></script>
+<script type="text/babel" src="bcs-signature.jsx?v=b2050"></script>
 
 <script type="text/babel">
 function App() {
@@ -132,21 +135,26 @@ function App() {
     <React.Fragment>
       <Nav />
       <main>
-        <Hero />
-        <Problem />
-        <AIGap />
-        <AIJumpstart />
-        <Services />
-        <Why />
-        <Pricing />
-        <Process />
-        <Durham />
-        <About />
-        <Apparel />
-        <Intake />
+        <ScreenDeck>
+          <Hero />
+          <AIGap />
+          <Services />
+          <AIJumpstart />
+          <Process />
+          <Work />
+          <Pricing />
+          <Why />
+          <Durham />
+          <About />
+          <Apparel />
+          <div className="screen-stack">
+            <Intake />
+            <Footer />
+          </div>
+        </ScreenDeck>
       </main>
-      <Footer />
       <DurhamFlagBadge />
+      <FloatingCall />
     </React.Fragment>
   );
 }

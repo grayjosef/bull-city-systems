@@ -3,72 +3,55 @@
 /* ---------- Pricing ---------- */
 const TIERS = [
   {
+    name: "Scan",
+    price: "Free",
+    sub: "30 min",
+    desc: "I look at what a customer sees: Google, your site on a phone, booking. Then a 30-minute chat. You get the three things I noticed.",
+    items: ["Public-footprint review", "30-minute call", "Three things I noticed, in writing"],
+    cta: "Book the Scan",
+  },
+  {
     name: "Starter Presence",
     price: "$499",
-    sub: "starting",
-    desc: "A clean, fast one-pager that makes you look like a real business and captures inbound leads.",
-    items: [
-      "Single-page custom website",
-      "Mobile-first responsive build",
-      "Intake form & basic analytics",
-      "Domain & hosting setup",
-    ],
+    sub: "all-in · one page",
+    desc: "A clean, fast one-pager that makes you look like a real business and takes bookings. The fastest way to Be Found.",
+    items: ["Single-page custom site", "Mobile-first", "Booking + intake wired in", "Domain, hosting, hand over"],
     cta: "Start small",
     go: "I SHIP IN 72 HOURS",
   },
   {
-    name: "Business Website",
-    price: "$1,199",
-    sub: "starting",
-    desc: "A multi-page site for an established small business: services, about, contact, the whole picture.",
-    items: [
-      "Up to 6 designed pages",
-      "Copy support & basic SEO",
-      "Lead routing to your inbox",
-      "Training & handoff docs",
-    ],
-    cta: "Most common",
+    name: "Map",
+    price: "$299",
+    sub: "credited to any Build",
+    desc: "All four BULL letters scored red / yellow / green. Top five fixes with prices. An hours-back estimate. The $299 comes off whatever we build next.",
+    items: ["BULL scorecard", "Top 5 fixes, priced", "Hours-back estimate", "Yours to keep, hire me or not"],
+    cta: "Map it",
     feature: true,
-    go: "I SHIP IN 14 DAYS",
+    go: "COMES OFF YOUR BUILD",
   },
   {
-    name: "Growth System",
-    price: "$4,999",
-    sub: "starting",
-    desc: "Website plus the connected pieces: automation, intake routing, and the workflows behind the scenes.",
-    items: [
-      "Everything in Business",
-      "Workflow automation build",
-      "M365 / Google integration",
-      "Internal tool or dashboard",
-    ],
-    cta: "Build the system",
+    name: "Be Found + Unify",
+    price: "$2,499",
+    sub: "all-in · Map included",
+    desc: "Fix the footprint. Google profile claimed and complete, one clear Book button, every listing matched, a brand kit from the logo you already have.",
+    items: ["Map included", "Google profile + listings", "Multi-page site or redesign", "Brand kit, copy, hand over"],
+    cta: "Build it",
   },
   {
-    name: "Custom Technical Work",
-    price: "Custom",
-    sub: "scoped quote",
-    desc: "Migrations, internal tools, app prototypes, IT cleanup, advisory. Quoted clearly before I start.",
-    items: [
-      "Discovery call & scope doc",
-      "Fixed or hourly options",
-      "Documented handoff",
-      "Optional ongoing support",
-    ],
-    cta: "Let's scope it",
+    name: "Link + Lighten",
+    price: "$2,999",
+    sub: "all-in · Map included",
+    desc: "Wire the tools. Live schedule on the site, calendar as source of truth, reply drafts and reminders, a Monday digest, AI only where you approve the result.",
+    items: ["Map included", "Booking + calendar integration", "Automations with an off switch", "AI intake, control panel, hand over"],
+    cta: "Wire it",
   },
   {
-    name: "Enterprise & Training",
-    price: "SOW",
-    sub: "or day-rate",
-    desc: "For teams that need a senior hand for a defined engagement. Fixed-fee workshops, team trainings, or scoped advisory, quoted clearly, delivered personally.",
-    items: [
-      "Fixed-fee SOW projects",
-      "Half-day & full-day workshops",
-      "On-site (Triangle) or remote",
-      "NDA / MSA ready",
-    ],
-    cta: "Talk enterprise",
+    name: "Care",
+    price: "$350–650",
+    sub: "per month · cancel any time",
+    desc: "I keep it running and send one page of results a month. Fixes, small improvements, and the hours-back number measured, not estimated.",
+    items: ["Monthly results page", "Fixes & small improvements", "Priority response", "Cancel any time"],
+    cta: "Keep it running",
   },
 ];
 
@@ -79,12 +62,12 @@ function Pricing() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">07 / Pricing</span>
+            <span className="numeral">06 / Pricing</span>
           </div>
           <div className="pricing-head">
             <h2 className="h-section">
-              Honest starting prices.<br />
-              <span className="t-mute">Every quote scoped before work begins.</span>
+              Every number is the whole number.<br />
+              <span className="t-mute">Nothing gets added at the end.</span>
             </h2>
             <p className="lede pricing-lede">
               No mystery pricing. No bait-and-switch. You'll know the cost,
@@ -96,7 +79,7 @@ function Pricing() {
         <div className="tiers">
           {TIERS.map((t) => (
             <article key={t.name} className={"tier" + (t.feature ? " tier-feature" : "")}>
-              {t.feature && <span className="tier-flag">Most projects fit here</span>}
+              {t.feature && <span className="tier-flag">Start here</span>}
               <header className="tier-head">
                 <h3 className="tier-name">{t.name}</h3>
                 {t.go && (
@@ -106,7 +89,7 @@ function Pricing() {
                   </span>
                 )}
                 <div className="tier-price">
-                  <span className="tier-sub eyebrow-mute">{t.sub} at</span>
+                  <span className="tier-sub eyebrow-mute">{t.sub}</span>
                   <span className="tier-amt">{t.price}</span>
                 </div>
               </header>
@@ -127,8 +110,8 @@ function Pricing() {
         </div>
 
         <p className="pricing-note">
-          <span className="numeral">Note:</span> Every quote is scoped clearly before work begins.
-          No mystery pricing. No bait and switch.
+          <span className="numeral">Note:</span> The Map ($299) is baked into every Build price, so if you Map first
+          it comes off the Build. Custom software, enterprise work, and team trainings are quoted in writing after the Map.
         </p>
       </div>
     </section>
@@ -136,42 +119,80 @@ function Pricing() {
 }
 
 /* ---------- Process ---------- */
+/* ---------- Process: The BULL Method ---------- */
 const STEPS = [
-  { n: "01", t: "Review the problem", d: "A short call to hear what's broken, what you've tried, and what you actually need to be true in 30 days." },
-  { n: "02", t: "Define the scope", d: "A written scope with deliverables, timeline, and a fixed or capped price. You sign before anything starts." },
-  { n: "03", t: "Build and refine", d: "The work happens. You see it as it goes, not surprises at the end. Real check-ins, real revisions." },
-  { n: "04", t: "Launch and handoff", d: "Ship it, document it, train your team, and hand back the keys. Optional ongoing support if you want it." },
+  { n: "01", t: "Scan",      who: "Free · 30 min",         d: "I look at what a customer sees: Google, your website on a phone, booking. Then a 30-minute chat. You get the three things I noticed." },
+  { n: "02", t: "Map",       who: "$299 · credited to any Build",      d: "I check all four BULL letters, test your booking end to end, and list your tools and time sinks. You get a scorecard, the top five fixes with prices, and an hours-back estimate. Yours whether or not you hire me for anything else." },
+  { n: "03", t: "Build",     who: "From $2,499 all-in · Map included", d: "I do the BULL letters you pick, in order. Fixed footprint, connected tools, automations you approve.",
+    bull: [
+      { l: "B", t: "Be found",          q: "Can a nearby stranger find you and know what to do next?" },
+      { l: "U", t: "Unify",             q: "Is it the same business everywhere?" },
+      { l: "L", t: "Link and lighten",  q: "Do your tools talk to each other, and what gets typed twice?" },
+      { l: "L", t: "Lock in control",   q: "Can you run it without me?" },
+    ] },
+  { n: "04", t: "Hand over", who: "Included",              d: "You run it while I watch. Short videos, a list of every account you own, and a teach-back where you do it, not me. Done means you can change it, see it, pause it, and get help without calling me first." },
+  { n: "05", t: "Care",      who: "$350 or $650 / month",  d: "I keep it running and send one page of results a month. Fixes, small improvements, and the hours-back number measured, not estimated." },
 ];
 
 function Process() {
   const ref = useReveal();
+  const [open, setOpen] = React.useState(-1);
   return (
     <section id="process" className="process">
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">08 / Process</span>
+            <span className="numeral">04 / Process</span>
+            <span className="aijs-id">THE BULL METHOD · LOOK, PLAN, FIX, TEACH, KEEP</span>
           </div>
           <h2 className="h-section">
-            Four steps.<br />
-            <span className="t-mute">No theater.</span>
+            Five steps.<br />
+            <span className="t-mute">Nothing gets built before the Map.</span>
           </h2>
+          <p className="lede process-lede">
+            The Scan earns the conversation. The Map decides what's worth fixing, and it's
+            baked into every Build so you never pay for it twice.
+          </p>
         </div>
 
         <ol className="process-list">
           {STEPS.map((s, i) => (
-            <li className="process-step" key={s.n}>
-              <div className="process-marker">
-                <span className="process-num">{s.n}</span>
-                {i < STEPS.length - 1 && <span className="process-line" />}
-              </div>
-              <div className="process-body">
-                <h3 className="process-t">{s.t}</h3>
+            <li className={"process-step" + (open === i ? " is-open" : "")} key={s.n}>
+              <button type="button" className="process-toggle" onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i}>
+                <div className="process-marker">
+                  <span className="process-num">{s.n}</span>
+                  {i < STEPS.length - 1 && <span className="process-line" />}
+                </div>
+                <div className="process-head">
+                  <h3 className="process-t">{s.t}</h3>
+                  <span className="process-who">{s.who}</span>
+                  <svg className="process-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+              </button>
+              <div className="process-body" hidden={open !== i}>
                 <p className="body">{s.d}</p>
+                {s.bull && (
+                  <ul className="bull-letters">
+                    {s.bull.map((b, j) => (
+                      <li key={j}>
+                        <span className="bull-letter">{b.l}</span>
+                        <div>
+                          <span className="bull-letter-t">{b.t}</span>
+                          <span className="bull-letter-q">{b.q}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </li>
           ))}
         </ol>
+
+        <p className="process-rule">
+          <span className="numeral">Order rule:</span> fix any red in B or U before building L.
+          Automating a messy footprint just spreads the mess faster.
+        </p>
       </div>
     </section>
   );
@@ -199,7 +220,7 @@ function Durham() {
 
       <div className="container durham-inner reveal" ref={ref}>
         <div className="durham-meta">
-          <span className="eyebrow">09 / Durham, NC</span>
+          <span className="eyebrow">07 / Durham, NC</span>
         </div>
         <h2 className="h-section durham-title">
           Built in Bull City.<br />
@@ -215,25 +236,6 @@ function Durham() {
           dashboards no one opens, just clean technical work for the cafés, contractors,
           clinics, studios, and small operators that make the Triangle actually run.
         </p>
-
-        <div className="durham-stats">
-          <div className="dstat">
-            <span className="dstat-num">35.99° N</span>
-            <span className="dstat-lbl">Latitude</span>
-          </div>
-          <div className="dstat">
-            <span className="dstat-num">78.90° W</span>
-            <span className="dstat-lbl">Longitude</span>
-          </div>
-          <div className="dstat">
-            <span className="dstat-num">405 ft</span>
-            <span className="dstat-lbl">Elevation</span>
-          </div>
-          <div className="dstat">
-            <span className="dstat-num">EST 1869</span>
-            <span className="dstat-lbl">City of Medicine</span>
-          </div>
-        </div>
 
         <div className="durham-rally">
           <span className="durham-rally-rule" />

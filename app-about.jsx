@@ -23,12 +23,11 @@ function About() {
 
         <div className="about-body">
           <div className="section-head">
-            <span className="numeral">10 / About the owner</span>
-            {/* numeral kept; section reads cleaner with About staying just before intake */}
+            <span className="numeral">08 / About</span>
           </div>
           <h2 className="h-section about-title">
-            Local first.<br />
-            <span className="t-mute">Technical second. Both, always.</span>
+            One operator.<br />
+            <span className="t-mute">You text one person. That person owns the outcome.</span>
           </h2>
           <p className="lede about-lede">
             I'm Josef Gray, Joey, a Durham-based veteran and community organizer.
@@ -48,25 +47,12 @@ function About() {
           <ul className="about-pills">
             <li className="vet-pill"><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span><span className="t-vet">Veteran-owned</span></li>
             <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Black-owned</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Durham resident</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Community organizer</li>
-            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Civic tech founder</li>
+            <li><span className="pill-check" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 L4.2 7.4 L8 3.6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Durham</li>
           </ul>
 
-          <div className="about-links">
-            <a className="btn btn-brass about-cta" href="https://politicalintegritynetwork.org" target="_blank" rel="noopener noreferrer">
-              Political Integrity Network <span className="arrow">↗</span>
-            </a>
-            <a className="btn btn-brass about-cta" href="https://thequietledger.org" target="_blank" rel="noopener noreferrer">
-              The Quiet Ledger <span className="arrow">↗</span>
-            </a>
-          </div>
+
         </div>
       </div>
-        <figure className="about-bull-band">
-          <img src="brand/bull-b3-cream.png" alt="The Bull City Systems bull, a full broadside bull formed from the letters B and S" className="about-bull-img" />
-          <figcaption className="about-bull-cap">The whole bull. Durham has drawn it broadside for a hundred years; so do we.</figcaption>
-        </figure>
     </section>
   );
 }
