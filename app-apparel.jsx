@@ -33,31 +33,11 @@ function ShopShelf() {
 }
 
 function ConceptGallery() {
-  const concepts = window.CONCEPT_LISTINGS || [];
-  if (!concepts.length) return null;
   return (
     <div className="concepts">
-      <div className="section-head">
-        <span className="apparel-drop-tag">Concepts in the works</span>
-      </div>
       <p className="concept-intro">
-        Concepts in development, not yet for sale. When a piece is ready, it
-        lands in the Applied Attention shop on Etsy.
+        The Bull City Systems apparel line is in production. New boards are on the way.
       </p>
-      <div className="shelf-grid">
-        {concepts.map((c) => (
-          <article className="shelf-card" key={c.id}>
-            <div className="shelf-card-media">
-              <img src={c.image} alt={c.alt} className="shelf-card-img" loading="lazy" />
-              <span className="shelf-badge">Concept</span>
-            </div>
-            <div className="shelf-card-body">
-              <h3 className="shelf-card-title">{c.name}</h3>
-              <p className="shelf-card-detail">{c.line}</p>
-            </div>
-          </article>
-        ))}
-      </div>
     </div>
   );
 }
@@ -82,7 +62,7 @@ function Apparel() {
 
         <div className="apparel-grid">
           <figure className="apparel-bull">
-            <img src="brand/bull-b3-cream.png?v=b2048" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
+            <img src="brand/bull-b3-cream.png?v=b2049" alt="The Bull City Systems bull, the full broadside B3 bull that goes on the apparel" className="apparel-bull-img" />
             <figcaption className="apparel-bull-cap">The whole bull. He is the mark on every piece.</figcaption>
           </figure>
 
