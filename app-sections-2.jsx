@@ -1,31 +1,74 @@
 /* global React */
 
-/* ---------- Pricing: one clean list, stated once ---------- */
+/* ---------- Pricing ---------- */
 const TIERS = [
   {
     name: "Starter Presence",
     price: "$499",
-    desc: "A clean, fast one-page site that makes you look like a real business and captures leads.",
-  },
-  {
-    name: "AI Jumpstart",
-    price: "$999",
-    desc: "AI set up on your accounts, a prompt library for your real work, and training for you and your crew.",
+    sub: "starting",
+    desc: "A clean, fast one-pager that makes you look like a real business and captures inbound leads.",
+    items: [
+      "Single-page custom website",
+      "Mobile-first responsive build",
+      "Intake form & basic analytics",
+      "Domain & hosting setup",
+    ],
+    cta: "Start small",
+    go: "I SHIP IN 72 HOURS",
   },
   {
     name: "Business Website",
     price: "$1,199",
-    desc: "A multi-page site for an established business: services, about, contact, the whole picture.",
+    sub: "starting",
+    desc: "A multi-page site for an established small business: services, about, contact, the whole picture.",
+    items: [
+      "Up to 6 designed pages",
+      "Copy support & basic SEO",
+      "Lead routing to your inbox",
+      "Training & handoff docs",
+    ],
+    cta: "Most common",
+    feature: true,
+    go: "I SHIP IN 14 DAYS",
   },
   {
     name: "Growth System",
     price: "$4,999",
+    sub: "starting",
     desc: "Website plus the connected pieces: automation, intake routing, and the workflows behind the scenes.",
+    items: [
+      "Everything in Business",
+      "Workflow automation build",
+      "M365 / Google integration",
+      "Internal tool or dashboard",
+    ],
+    cta: "Build the system",
   },
   {
-    name: "Custom",
-    price: "By SOW",
-    desc: "Software, migrations, internal tools, cleanup. Scoped and quoted clearly before work begins.",
+    name: "Custom Technical Work",
+    price: "Custom",
+    sub: "scoped quote",
+    desc: "Migrations, internal tools, app prototypes, IT cleanup, advisory. Quoted clearly before I start.",
+    items: [
+      "Discovery call & scope doc",
+      "Fixed or hourly options",
+      "Documented handoff",
+      "Optional ongoing support",
+    ],
+    cta: "Let's scope it",
+  },
+  {
+    name: "Enterprise & Training",
+    price: "SOW",
+    sub: "or day-rate",
+    desc: "For teams that need a senior hand for a defined engagement. Fixed-fee workshops, team trainings, or scoped advisory, quoted clearly, delivered personally.",
+    items: [
+      "Fixed-fee SOW projects",
+      "Half-day & full-day workshops",
+      "On-site (Triangle) or remote",
+      "NDA / MSA ready",
+    ],
+    cta: "Talk enterprise",
   },
 ];
 
@@ -36,27 +79,56 @@ function Pricing() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">02 / Pricing</span>
+            <span className="numeral">07 / Pricing</span>
           </div>
-          <h2 className="h-section">Pricing.</h2>
+          <div className="pricing-head">
+            <h2 className="h-section">
+              Honest starting prices.<br />
+              <span className="t-mute">Every quote scoped before work begins.</span>
+            </h2>
+            <p className="lede pricing-lede">
+              No mystery pricing. No bait-and-switch. You'll know the cost,
+              the timeline, and what's in scope before a line of code gets written.
+            </p>
+          </div>
         </div>
 
         <div className="tiers">
           {TIERS.map((t) => (
-            <article key={t.name} className="tier">
+            <article key={t.name} className={"tier" + (t.feature ? " tier-feature" : "")}>
+              {t.feature && <span className="tier-flag">Most projects fit here</span>}
               <header className="tier-head">
                 <h3 className="tier-name">{t.name}</h3>
+                {t.go && (
+                  <span className="tier-go">
+                    <span className="tier-go-dot" />
+                    {t.go}
+                  </span>
+                )}
                 <div className="tier-price">
+                  <span className="tier-sub eyebrow-mute">{t.sub} at</span>
                   <span className="tier-amt">{t.price}</span>
                 </div>
               </header>
               <p className="tier-desc body">{t.desc}</p>
+              <ul className="tier-list">
+                {t.items.map((i) => (
+                  <li key={i}><span className="tier-tick">+</span>{i}</li>
+                ))}
+              </ul>
+              <a
+                className={"btn " + (t.feature ? "btn-primary" : "btn-ghost") + " tier-cta"}
+                href="/book/"
+              >
+                {t.cta} <span className="arrow">→</span>
+              </a>
             </article>
           ))}
         </div>
 
         <p className="pricing-note">
-          Booking deposit: $99, applied in full to any project.
+          <span className="numeral">Note:</span> Every quote is scoped clearly before work begins.
+          No mystery pricing. No bait and switch.
         </p>
       </div>
     </section>

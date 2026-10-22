@@ -46,31 +46,94 @@ function Problem() {
   );
 }
 
-/* ---------- Services Section: what we do, four entries, stated once ---------- */
+/* ---------- Services Section ---------- */
 const SERVICES = [
   {
     n: "01",
-    title: "Custom software",
-    body: "Internal tools, portals, and systems built end to end for the way your business actually runs.",
+    title: "Website design & development",
+    body: "Custom websites built to load fast, look sharp, and turn visitors into customers, designed around your brand, engineered to perform.",
+    points: ["Custom design & build", "Mobile-first responsive", "SEO basics & analytics"],
     accent: "blue",
   },
   {
     n: "02",
-    title: "AI automation & integration",
-    body: "AI set up on your accounts and your team trained to use it. The AI Jumpstart: $999 flat.",
+    title: "Branding & identity",
+    body: "Logos, visual identity, and brand systems that make you look like the business you're becoming, not a template someone else is also using.",
+    points: ["Logo & visual identity", "Brand guidelines", "Marketing collateral"],
     accent: "brass",
   },
   {
     n: "03",
-    title: "Websites",
-    body: "Custom websites that load fast, look sharp, and turn visitors into customers.",
+    title: "Messaging & copy",
+    body: "Words that sell. I sharpen your story, your offers, and your calls to action so a visitor understands why you in seconds, not minutes.",
+    points: ["Website copy", "Offer & positioning", "Email & sales collateral"],
     accent: "blue",
   },
   {
     n: "04",
-    title: "Online stores",
-    body: "Stores and checkout built around how you sell, connected to the tools you already use.",
+    title: "Business development",
+    body: "Go-to-market strategy, offer design, and lead systems: the business thinking that has to come before the technology, from someone who's operated.",
+    points: ["Offer design", "Lead systems & intake", "Growth roadmaps"],
     accent: "brick",
+  },
+  {
+    n: "05",
+    title: "Software engineering",
+    body: "Senior-level engineering capacity for teams that need it: architecture reviews, code audits, and technical leadership on demand, no agency bloat.",
+    points: ["Architecture reviews", "Code audits", "Fractional tech leadership"],
+    accent: "brass",
+  },
+  {
+    n: "06",
+    title: "Custom software builds",
+    body: "Bespoke software built end-to-end: internal tools, customer portals, dashboards, scheduling systems. Scoped, quoted, and delivered. The things off-the-shelf SaaS can't do.",
+    points: ["Discovery & scoping", "Full-stack build", "Deploy & maintenance"],
+    accent: "blue",
+    cta: "email",
+  },
+  {
+    n: "07",
+    title: "Custom cloud applications",
+    body: "Cloud-native applications designed to scale, architected on modern infrastructure, deployed with CI/CD, monitored in production. Built for growth, not just launch.",
+    points: ["Cloud architecture", "CI/CD pipelines", "Monitoring & scaling"],
+    accent: "brick",
+    cta: "email",
+  },
+  {
+    n: "08",
+    title: "IT security",
+    body: "Security baselines, audits, and hardening for small businesses that can't afford a breach: MFA everywhere, backups that work, endpoint protection, phishing-resistant setups.",
+    points: ["Security audits", "MFA & access hardening", "Backup & recovery"],
+    accent: "brass",
+  },
+  {
+    n: "09",
+    title: "Managed IT services",
+    body: "Your outsourced IT department: devices, accounts, vendor coordination, and the things that always seem to break on Friday. Proactive, documented, one call away.",
+    points: ["Helpdesk & support", "Device & account management", "Vendor coordination"],
+    accent: "blue",
+  },
+  {
+    n: "10",
+    title: "Cloud infrastructure",
+    body: "Cloud architecture, migrations, and Microsoft 365 management, set up right, secured, documented, and handed back to you with training.",
+    points: ["M365 setup & migration", "Cloud architecture", "Backup & compliance"],
+    accent: "brick",
+  },
+  {
+    n: "11",
+    title: "Hardware consulting",
+    body: "Workstations, networking, point-of-sale, field hardware: spec'd, sourced, and set up for how your team actually works. No oversold gear, no underpowered regrets.",
+    points: ["Hardware spec & sourcing", "Network setup", "POS & field systems"],
+    accent: "brass",
+    cta: "email",
+  },
+  {
+    n: "12",
+    title: "AI integrations",
+    body: "Real AI in your real systems, doing real work. Not a chatbot widget. I build AI that reads your docs, routes your leads, drafts your replies, and runs your queues.",
+    points: ["Intake that thinks", "Internal copilots over your docs", "Support that closes itself", "Operational agents"],
+    accent: "blue",
   },
 ];
 
@@ -81,26 +144,60 @@ function Services() {
       <div className="container">
         <div className="reveal" ref={ref}>
           <div className="section-head">
-            <span className="numeral">01 / What we do</span>
+            <span className="numeral">05 / Services</span>
           </div>
-          <h2 className="h-section">What we do.</h2>
+          <div className="services-head">
+            <h2 className="h-section">
+              Twelve disciplines.<br />
+              <span className="t-mute">Small business to enterprise.</span>
+            </h2>
+            <p className="lede services-lede">
+              Whether you're a five-person shop on Foster Street or a 500-person
+              organization with a procurement office, the work is the same: real
+              technical execution, written down, delivered to spec. Plus trainings
+              that actually stick.
+            </p>
+          </div>
         </div>
 
         <div className="services-grid">
-          {SERVICES.map((s) => (
-            <article className={"svc-card accent-" + s.accent} key={s.n}>
-              <div className="card-accent-top" />
-              <header className="svc-head">
-                <span className="numeral">{s.n}</span>
-                <span className="svc-dot" />
-              </header>
-              <h3 className="svc-title">{s.title}</h3>
-              <p className="svc-body body">{s.body}</p>
-            </article>
-          ))}
+          {SERVICES.map((s) => <ServiceCard key={s.n} s={s} />)}
         </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ s }) {
+  const [hover, setHover] = useState2(false);
+  return (
+    <article
+      className={"svc-card accent-" + s.accent + (hover ? " is-hover" : "") + (s.cta === "email" ? " has-quote-cta" : "")}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div className="card-accent-top" />
+      <header className="svc-head">
+        <span className="numeral">{s.n}</span>
+        <span className="svc-dot" />
+      </header>
+      <h3 className="svc-title">{s.title}</h3>
+      <p className="svc-body body">{s.body}</p>
+      <ul className="svc-points">
+        {s.points.map((p) => (
+          <li key={p}><span className="svc-tick">+</span>{p}</li>
+        ))}
+      </ul>
+      {s.cta === "email" && (
+        <a
+          className="svc-quote-cta"
+          href={"mailto:hello@bullcitysystems.com?subject=" + encodeURIComponent("Quote request: " + s.title) + "&body=" + encodeURIComponent("Hi,\n\nI'd like a quote for full-spectrum app development. A quick summary of what I'm trying to build:\n\n- What it does:\n- Who uses it:\n- Rough timeline:\n- Approximate budget:\n\nThanks.\n")}
+        >
+          <span className="svc-quote-dot" />
+          Email for a quote <span className="arrow">→</span>
+        </a>
+      )}
+    </article>
   );
 }
 
