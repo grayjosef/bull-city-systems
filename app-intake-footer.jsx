@@ -59,7 +59,7 @@ function Footer() {
 
         <div className="footer-etsy">
           <a href="https://www.etsy.com/shop/AppliedAttention" target="_blank" rel="noopener noreferrer" aria-label="Applied Attention on Etsy">
-            <img src="brand/etsy-shop-qr.png?v=b2044" alt="QR code for the Applied Attention shop on Etsy" className="footer-etsy-qr" width={104} height={104} />
+            <img src="brand/etsy-shop-qr.png?v=b2045" alt="QR code for the Applied Attention shop on Etsy" className="footer-etsy-qr" width={104} height={104} />
           </a>
           <div className="footer-etsy-copy">
             <p>Wearing the gear? Scan to find it.</p>
