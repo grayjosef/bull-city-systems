@@ -41,20 +41,20 @@
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name {
-  font-family: var(--f-display);
+  font-family: var(--f-sans);
   font-size: 16px;
   font-weight: 600;
-  font-variation-settings: "wdth" 95;
   color: var(--c-brass);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 .brand-sub {
-  font-family: var(--f-sans);
-  font-size: 12px;
-  font-style: italic;
-  font-weight: 350;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 500;
   color: var(--c-mute);
-  letter-spacing: 0;
+  letter-spacing: 0.08em;
   margin-top: 3px;
 }
 .nav-links {
@@ -166,7 +166,7 @@
   font-stretch: 75%;
 }
 .hero-italic {
-  font-family: var(--f-display);
+  font-family: var(--f-sans);
   font-style: italic;
   font-weight: 400;
   color: var(--c-blue-soft);
