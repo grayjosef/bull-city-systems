@@ -4,8 +4,9 @@
  * START: two ways in, kept deliberately separate.
  *   A) FREE 30-minute intro call: "check you out and book a call."
  *      Books on Google Calendar (window.BOOKING_URL). No money.
- *   B) PAID 60-minute working session: $99 deposit, applies in full
- *      to any commissioned project. Books through /book (the Worker).
+ *   B) PAID working session, 60 to 90 minutes: $99 deposit,
+ *      refundable, applies in full to any commissioned project.
+ *      Books through /book (the Worker).
  * The old homepage intake form is gone; these two doors replace it.
  * ===================================================================== */
 
@@ -57,18 +58,19 @@ function Start() {
             <header className="tier-head">
               <h3 className="tier-name">Working session</h3>
               <div className="tier-price">
-                <span className="tier-sub eyebrow-mute">60 minutes · deposit credited in full</span>
+                <span className="tier-sub eyebrow-mute">60 to 90 minutes · deposit credited in full</span>
                 <span className="tier-amt">$99</span>
               </div>
             </header>
             <p className="tier-desc body">
-              Ready to work? Put $99 down on a full 60-minute working
+              Ready to work? Put $99 down on a 60 to 90 minute working
               session. We dig into your systems and leave with a real plan.
-              The $99 deposit applies in full to any commissioned project.
+              The $99 deposit is refundable, and applies in full to any
+              commissioned project.
             </p>
             <ul className="tier-list">
-              <li><span className="tier-tick">+</span>60-minute working session</li>
-              <li><span className="tier-tick">+</span>$99 deposit, paid up front</li>
+              <li><span className="tier-tick">+</span>60 to 90 minute working session</li>
+              <li><span className="tier-tick">+</span>$99 refundable deposit, paid up front</li>
               <li><span className="tier-tick">+</span>Applies in full to any commissioned project</li>
               <li><span className="tier-tick">+</span>A plan you keep either way</li>
             </ul>
