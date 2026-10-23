@@ -327,7 +327,12 @@ html, body { height: 100%; overflow: hidden; }
 .nav-deck .brand-name { font-size: 22px; }
 @media (max-width: 720px) {
   .nav-deck .nav-inner { height: 104px; }
-  .nav-deck .brand .bcs-mark { height: 86px; }
+  /* pass 2: 86px tall put the mark 168px wide (1.954 aspect) and the
+     brand ran to ~340px, under the fixed menu button (left edge 313px
+     at a 375px viewport). 64px tall = 125px wide: the full wordmark
+     clears the button with room to spare, and this is the only place
+     the bull shrinks; hero/presence uses are outside this selector. */
+  .nav-deck .brand .bcs-mark { height: 64px; }
   .nav-deck .brand-name { font-size: 17px; }
 }
 
@@ -535,4 +540,47 @@ html, body { height: 100%; overflow: hidden; }
 @media (max-width: 640px) {
   /* slimmer call pill on phones */
   .floating-call { padding: 10px 14px; font-size: 12.5px; }
+}
+
+/* =========================================================
+   MOBILE + TABLET PASS 2 (2026-10-22)
+   Three screenshot-driven fixes, scoped to small widths;
+   desktop rendering is untouched.
+   1) SERVICES STACK: sections-v2.css pins the grid variant
+      at repeat(3, 1fr) with no media query, and its selector
+      body[data-services="grid"] .services-grid (specificity
+      0-2-1) outranks the 2-col and 1-col collapses written
+      in sections.css (0-1-0). Three forced columns plus card
+      min-content pushed the grid to roughly 510px inside a
+      ~343px phone column, and .screen clips overflow-x, so
+      the third column sat off-screen and unreachable: there
+      was something there, and you could not scroll to it.
+      Same specificity here, later in the cascade, one
+      column: the cards stack vertically, full content
+      width, centered in the section, in numeric order.
+   2) NOTHING OFF-SCREEN: media inside a screen is capped
+      at the screen width as a backstop. Every other grid
+      was audited at 375px and 768px (problem rows, why,
+      pricing tiers, work, process, bull letters, about,
+      apparel, ai-gap, ai-jumpstart, footer): each already
+      collapses inside the viewport at those widths.
+   3) PROGRESS RAIL: pass 1 widened the dot hit areas to
+      14px; 12 dots + gaps + rail padding total 280px
+      against 267px clear between the docked arrows at
+      375px, a ~6px underlap per side. At <=480px the rail
+      narrows to 230px and clears both arrows.
+   Header bull sizing lives in the <=720px .nav-deck block
+   above (86px down to 64px tall, 168px to 125px wide).
+   ========================================================= */
+@media (max-width: 1024px) {
+  body[data-services="grid"] .services-grid,
+  body[data-services="cards"] .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .screen img, .screen video, .screen svg, .screen table { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .deck-rail { gap: 6px; padding: 8px 10px; }
+  .deck-dot, .deck-dot.on { width: 12px; }
 }
