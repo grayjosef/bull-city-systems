@@ -188,6 +188,7 @@ html, body { height: 100%; overflow: hidden; }
   top: 0; right: 0;
   width: min(340px, 100vw);
   height: 100vh;
+  height: 100dvh;   /* mobile Safari: keep the menu foot clear of the URL bar */
   z-index: 65;
   background: linear-gradient(180deg, rgba(20,24,31,0.98), rgba(11,13,17,0.98));
   border-left: 1px solid var(--c-line-soft);
@@ -451,3 +452,87 @@ html, body { height: 100%; overflow: hidden; }
 
 /* intake: smaller headline, no 12-chip grid anymore */
 .section-intake .section-lead { max-width: 60ch; }
+
+/* =========================================================
+   MOBILE + TABLET CHROME PASS (2026-10-22)
+   Problem: on phones the fixed bottom chrome stacked about
+   130px deep with live collisions (deck arrows at bottom:88px
+   overlapped the call pill at bottom:64px on the right; on
+   tablets the flag badge overlapped both bottom-docked deck
+   arrows), while sections had only 72px of bottom padding,
+   so the end of every screen sat permanently behind floating
+   elements no amount of scrolling could clear.
+   Fix, scoped to <=1024px so desktop rendering is untouched:
+   one docked bottom row (prev arrow, dots rail, next arrow
+   on one baseline), flag badge and call pill lifted to a
+   second row above it, section bottom padding raised so
+   content scrolls fully clear of the whole stack, bigger
+   tap areas on the rail dots, and 16px form fields (stops
+   the iOS focus zoom on the intake form).
+   ========================================================= */
+@media (max-width: 1024px) {
+  /* docked bottom row: prev | rail | next on one baseline */
+  .deck-arrow {
+    top: auto;
+    bottom: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    transform: none;
+    width: 42px; height: 42px;
+  }
+  .deck-arrow:hover { transform: scale(1.06); }
+  .deck-arrow-prev { left: 12px; right: auto; }
+  .deck-arrow-next { right: 12px; left: auto; }
+  .deck-rail {
+    bottom: 13px;
+    bottom: calc(13px + env(safe-area-inset-bottom));
+  }
+
+  /* second row: flag badge left, call pill right, clear of the row */
+  .flag-badge {
+    bottom: 66px;
+    bottom: calc(66px + env(safe-area-inset-bottom));
+    left: 14px;
+  }
+  .floating-call {
+    bottom: 66px;
+    bottom: calc(66px + env(safe-area-inset-bottom));
+    right: 14px;
+  }
+
+  /* content must scroll clear of the whole stack: the second
+     row's top edge sits about 134px above the viewport bottom */
+  .screen > section,
+  .screen > .screen-stack > section { padding-bottom: 156px; }
+
+  /* bigger hit areas for the rail dots; the visible dot is unchanged */
+  .deck-dot {
+    width: 14px; height: 26px;
+    border-radius: 999px;
+    background: transparent;
+    position: relative;
+  }
+  .deck-dot:hover { background: transparent; }
+  .deck-dot::after {
+    content: "";
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--c-line);
+    transition: all 200ms var(--ease-out);
+  }
+  .deck-dot.on { width: 14px; background: transparent; }
+  .deck-dot.on::after { width: 16px; border-radius: 3px; background: var(--c-brass); }
+  .deck-dot:hover::after { background: var(--c-bone-dim); }
+  .deck-dot.on:hover::after { background: var(--c-brass); }
+
+  /* roomier menu rows for touch */
+  .bull-menu a.bm-link { padding: 10px 0; }
+
+  /* 16px fields: stops iOS Safari auto-zoom on focus */
+  .field-input, .field-textarea, .field-select { font-size: 16px; }
+}
+
+@media (max-width: 640px) {
+  /* slimmer call pill on phones */
+  .floating-call { padding: 10px 14px; font-size: 12.5px; }
+}
